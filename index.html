@@ -26,22 +26,25 @@
     /* TOP BAR */
     .topbar {
       background: #07551f;
-      color: white;
+      color: #fff;
       padding: 10px 6%;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       font-size: 14px;
     }
 
     /* NAVBAR */
     .navbar {
-      background: white;
       min-height: 88px;
       padding: 0 6%;
+      background: #fff;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid #e5ece6;
+      position: relative;
+      z-index: 10;
     }
 
     .logo {
@@ -56,21 +59,23 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #e9f7ec;
+      background: #e8f6eb;
       border-radius: 15px;
       font-size: 28px;
     }
 
     .logo h1 {
-      font-size: 25px;
       color: #07551f;
+      font-size: 25px;
+      line-height: 1;
+      margin-bottom: 5px;
     }
 
     .logo span {
+      color: #718078;
       font-size: 10px;
-      letter-spacing: 3px;
-      color: #6c796f;
       font-weight: bold;
+      letter-spacing: 3px;
     }
 
     .nav-links {
@@ -80,8 +85,8 @@
     }
 
     .nav-links a {
-      text-decoration: none;
       color: #26382b;
+      text-decoration: none;
       font-size: 15px;
       font-weight: 600;
     }
@@ -92,7 +97,7 @@
 
     .order-btn {
       background: #198754;
-      color: white !important;
+      color: #fff !important;
       padding: 12px 18px;
       border-radius: 10px;
     }
@@ -100,26 +105,29 @@
     /* HERO */
     .hero {
       min-height: 620px;
-      padding: 70px 7%;
+      padding: 75px 7%;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 45px;
       overflow: hidden;
-      background: linear-gradient(135deg, #f5fff7, #ffffff, #eaf7ed);
+      background:
+        radial-gradient(circle at 85% 50%, #dff3e3 0, #dff3e3 12%, transparent 35%),
+        linear-gradient(135deg, #f5fff7, #ffffff 55%, #edf8ef);
     }
 
     .hero-content {
       max-width: 600px;
+      position: relative;
       z-index: 2;
     }
 
     .badge {
       display: inline-block;
-      padding: 9px 17px;
       margin-bottom: 20px;
+      padding: 9px 17px;
       border-radius: 30px;
-      background: #e3f5e7;
+      background: #e4f6e8;
       color: #198754;
       font-size: 13px;
       font-weight: bold;
@@ -127,9 +135,10 @@
     }
 
     .hero h2 {
+      color: #17351f;
       font-size: clamp(43px, 5vw, 68px);
       line-height: 1.04;
-      color: #17351f;
+      font-weight: 800;
     }
 
     .hero h2 strong {
@@ -137,7 +146,7 @@
       color: #198754;
     }
 
-    .hero-content > p {
+    .hero-description {
       max-width: 540px;
       margin: 25px 0 30px;
       color: #5e6c62;
@@ -152,22 +161,23 @@
     }
 
     .buttons a {
-      text-decoration: none;
+      display: inline-block;
       padding: 15px 22px;
       border-radius: 12px;
+      text-decoration: none;
       font-weight: bold;
       transition: 0.25s;
     }
 
     .primary-btn {
+      color: #fff;
       background: #198754;
-      color: white;
-      box-shadow: 0 10px 25px rgba(25,135,84,0.2);
+      box-shadow: 0 10px 25px rgba(25, 135, 84, 0.22);
     }
 
     .secondary-btn {
-      background: white;
       color: #198754;
+      background: #fff;
       border: 1px solid #cfe6d4;
     }
 
@@ -177,40 +187,40 @@
 
     /* HERO IMAGE */
     .hero-visual {
-      position: relative;
       width: 48%;
       min-height: 470px;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .hero-circle {
-      position: absolute;
       width: 400px;
       height: 400px;
+      position: absolute;
       border-radius: 50%;
       background: #dff3e3;
     }
 
     .basket-image {
-      position: relative;
-      z-index: 2;
       width: 430px;
       height: 430px;
+      position: relative;
+      z-index: 2;
       object-fit: cover;
+      border: 10px solid #fff;
       border-radius: 50%;
-      border: 10px solid white;
       box-shadow: 0 25px 60px rgba(0,0,0,0.15);
     }
 
     .floating-card {
-      position: absolute;
-      z-index: 3;
-      right: 0;
-      bottom: 20px;
       width: 220px;
       padding: 18px;
+      position: absolute;
+      right: 0;
+      bottom: 20px;
+      z-index: 4;
       border-radius: 18px;
       background: rgba(255,255,255,0.97);
       box-shadow: 0 15px 40px rgba(0,0,0,0.12);
@@ -239,19 +249,19 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
       padding: 35px 7%;
-      background: white;
+      background: #fff;
     }
 
     .feature {
-      text-align: center;
       padding: 22px;
+      text-align: center;
       border-radius: 18px;
       background: #f7fbf7;
     }
 
     .feature-icon {
-      font-size: 30px;
       margin-bottom: 8px;
+      font-size: 30px;
     }
 
     .feature h3 {
@@ -263,24 +273,23 @@
       color: #68756c;
     }
 
-    /* SECTION */
+    /* PRODUCTS */
     .section {
       padding: 75px 7%;
       text-align: center;
     }
 
-    .section > h2 {
-      font-size: 38px;
+    .section h2 {
       margin-bottom: 10px;
       color: #17351f;
+      font-size: 38px;
     }
 
-    .section > p {
-      color: #68756c;
+    .section-intro {
       margin-bottom: 30px;
+      color: #68756c;
     }
 
-    /* CARDS */
     .cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -289,9 +298,9 @@
 
     .card {
       overflow: hidden;
-      background: white;
-      border-radius: 20px;
       text-align: left;
+      background: #fff;
+      border-radius: 20px;
       box-shadow: 0 10px 35px rgba(0,0,0,0.08);
       transition: 0.25s;
     }
@@ -303,6 +312,7 @@
     .card img {
       width: 100%;
       height: 240px;
+      display: block;
       object-fit: cover;
     }
 
@@ -322,15 +332,15 @@
 
     /* CONTACT */
     .contact {
-      padding: 70px 7%;
+      padding: 75px 7%;
       text-align: center;
+      color: #fff;
       background: #07551f;
-      color: white;
     }
 
     .contact h2 {
-      font-size: 36px;
       margin-bottom: 12px;
+      font-size: 36px;
     }
 
     .contact p {
@@ -341,8 +351,8 @@
     .contact-btn {
       display: inline-block;
       padding: 15px 25px;
-      background: white;
       color: #07551f;
+      background: #fff;
       border-radius: 12px;
       text-decoration: none;
       font-weight: bold;
@@ -352,8 +362,8 @@
     footer {
       padding: 20px;
       text-align: center;
-      background: #043b16;
       color: #c9dfce;
+      background: #043b16;
       font-size: 13px;
     }
 
@@ -361,18 +371,18 @@
     @media (max-width: 850px) {
 
       .topbar {
-        text-align: center;
         justify-content: center;
+        text-align: center;
       }
 
-      .topbar span {
+      .topbar span:last-child {
         display: none;
       }
 
       .navbar {
         flex-direction: column;
-        padding: 18px 5%;
         gap: 18px;
+        padding: 18px 5%;
       }
 
       .nav-links {
@@ -388,15 +398,15 @@
 
       .hero {
         flex-direction: column;
-        text-align: center;
         padding: 55px 6%;
+        text-align: center;
       }
 
       .hero-content {
         max-width: 100%;
       }
 
-      .hero-content > p {
+      .hero-description {
         margin-left: auto;
         margin-right: auto;
       }
@@ -407,7 +417,7 @@
 
       .hero-visual {
         width: 100%;
-        min-height: 380px;
+        min-height: 390px;
       }
 
       .hero-circle {
@@ -516,7 +526,7 @@
           <strong>See. Taste. Trust.</strong>
         </h2>
 
-        <p>
+        <p class="hero-description">
           Premium quality fruits and vegetables, carefully selected every day
           and delivered fresh to your doorstep in Mohali.
         </p>
@@ -589,7 +599,7 @@
 
       <h2>Fresh Picks</h2>
 
-      <p>
+      <p class="section-intro">
         Handpicked fruits and vegetables for your everyday needs.
       </p>
 
@@ -598,68 +608,3 @@
         <div class="card">
 
           <img
-            src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=800&q=90"
-            alt="Fresh apples"
-          >
-
-          <div class="card-content">
-            <h3>Fresh Apples</h3>
-            <p>Crisp, fresh and carefully selected.</p>
-          </div>
-
-        </div>
-
-        <div class="card" id="vegetables">
-
-          <img
-            src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=90"
-            alt="Fresh vegetables"
-          >
-
-          <div class="card-content">
-            <h3>Fresh Vegetables</h3>
-            <p>Daily fresh vegetables for your kitchen.</p>
-          </div>
-
-        </div>
-
-        <div class="card" id="offers">
-
-          <img
-            src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=800&q=90"
-            alt="Fresh fruits"
-          >
-
-          <div class="card-content">
-            <h3>Daily Fresh Fruits</h3>
-            <p>Quality fruits at competitive local prices.</p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <section class="contact" id="contact">
-
-      <h2>Freshness Is Just A Message Away</h2>
-
-      <p>
-        Order fresh fruits and vegetables directly on WhatsApp.
-      </p>
-
-      <a class="contact-btn" href="https://wa.me/">
-        💬 Order on WhatsApp
-      </a>
-
-    </section>
-
-  </main>
-
-  <footer>
-    © 2026 Nand Lal Fresh Market • Fresh Fruits & Vegetables
-  </footer>
-
-</body>
-</html>
