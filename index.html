@@ -6,9 +6,6 @@
 
     <title>Nand Lal Fresh Market | Fresh Fruits & Vegetables</title>
 
-    <meta name="description"
-          content="Nand Lal Fresh Market - Fresh fruits and vegetables with daily updated prices and home delivery in Mohali.">
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,22 +13,22 @@
 
 <!-- TOP BAR -->
 <div class="top-bar">
-    <div>🥬 Fresh • Clean • Quality</div>
-    <div>📍 Mohali Home Delivery</div>
+    <span>🌿 Fresh • Clean • Quality</span>
+    <span>📍 Mohali Home Delivery</span>
 </div>
 
 
-<!-- NAVIGATION -->
+<!-- NAVBAR -->
 <nav class="navbar">
 
-    <div class="brand">
+    <a href="#" class="brand">
         <div class="brand-icon">🍎</div>
 
         <div>
             <h1>Nand Lal</h1>
             <span>FRESH MARKET</span>
         </div>
-    </div>
+    </a>
 
     <div class="nav-links">
         <a href="#home">Home</a>
@@ -41,7 +38,7 @@
         <a href="#contact">Contact</a>
     </div>
 
-    <a class="nav-order" href="#order">
+    <a href="#order" class="nav-order">
         🛒 Order Now
     </a>
 
@@ -53,24 +50,27 @@
 
     <div class="hero-content">
 
-        <span class="hero-badge">
+        <div class="hero-badge">
             ✨ FRESH EVERY DAY
-        </span>
+        </div>
 
         <h2>
-            Freshness You Can<br>
-            <strong>See. Taste. Trust.</strong>
+            Freshness You<br>
+            Can <strong>See.</strong><br>
+            <strong>Taste.</strong><br>
+            <strong>Trust.</strong>
         </h2>
 
         <p>
-            Premium quality fruits & vegetables,
-            carefully selected for your family.
+            Premium quality fruits and vegetables,
+            carefully selected every day and delivered
+            fresh to your doorstep in Mohali.
         </p>
 
         <div class="hero-buttons">
 
             <a href="#fruits" class="primary-btn">
-                Explore Fresh Items →
+                Explore Fresh Produce →
             </a>
 
             <a href="#order" class="secondary-btn">
@@ -82,38 +82,56 @@
         <div class="hero-features">
 
             <div>
-                <strong>🥬</strong>
-                <span>Fresh Daily</span>
+                <strong>100%</strong>
+                <span>Fresh</span>
             </div>
 
             <div>
-                <strong>🚚</strong>
-                <span>Home Delivery</span>
+                <strong>Daily</strong>
+                <span>Selection</span>
             </div>
 
             <div>
-                <strong>💚</strong>
-                <span>Quality First</span>
+                <strong>Fast</strong>
+                <span>Delivery</span>
             </div>
 
         </div>
 
     </div>
 
+
+    <!-- REAL FRUIT VISUAL -->
     <div class="hero-visual">
 
         <div class="fresh-circle">
-            <span>🍎</span>
-            <span>🥦</span>
-            <span>🍊</span>
-            <span>🥕</span>
-            <span>🍇</span>
+
+            <img
+                src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=500&q=90"
+                alt="Fresh apples">
+
+            <img
+                src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=500&q=90"
+                alt="Fresh bananas">
+
+            <img
+                src="https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=500&q=90"
+                alt="Fresh vegetables">
+
+            <img
+                src="https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=500&q=90"
+                alt="Fresh mango">
+
         </div>
 
         <div class="fresh-card">
-            <small>TODAY'S FRESH PICK</small>
-            <h3>Farm Fresh</h3>
-            <p>Picked with care for you.</p>
+
+            <small>FRESH TODAY</small>
+
+            <h3>Farm to Home</h3>
+
+            <p>Quality you can trust.</p>
+
         </div>
 
     </div>
@@ -126,17 +144,17 @@
 
     <div>
         <strong>100%</strong>
-        <span>Fresh Selection</span>
+        <span>Fresh Produce</span>
     </div>
 
     <div>
         <strong>Daily</strong>
-        <span>Price Updates</span>
+        <span>Fresh Stock</span>
     </div>
 
     <div>
-        <strong>Fast</strong>
-        <span>Local Delivery</span>
+        <strong>6–7 KM</strong>
+        <span>Delivery Area</span>
     </div>
 
     <div>
@@ -147,19 +165,17 @@
 </section>
 
 
-<!-- TODAY'S PICKS -->
+<!-- FRUITS -->
 <section class="products-section" id="fruits">
 
     <div class="section-heading">
 
-        <span>WHAT'S FRESH TODAY</span>
+        <span>HANDPICKED DAILY</span>
 
-        <h2>
-            Today's Fresh Picks
-        </h2>
+        <h2>Fresh Fruits</h2>
 
         <p>
-            Quality products at today's updated market prices.
+            Naturally fresh. Carefully selected.
         </p>
 
     </div>
@@ -167,17 +183,20 @@
 
     <div class="product-grid">
 
-        <article class="product-card">
 
-            <div class="product-image apple">
-                🍎
+        <div class="product-card">
+
+            <div class="product-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=800&q=90"
+                    alt="Fresh Apple">
+
             </div>
 
             <div class="product-info">
 
-                <span class="product-category">
-                    FRUIT
-                </span>
+                <span class="product-category">FRUIT</span>
 
                 <h3>Fresh Apple</h3>
 
@@ -187,25 +206,27 @@
                 </div>
 
                 <a href="#order" class="product-btn">
-                    Add to Order
+                    Order Now
                 </a>
 
             </div>
 
-        </article>
+        </div>
 
 
-        <article class="product-card">
+        <div class="product-card">
 
-            <div class="product-image banana">
-                🍌
+            <div class="product-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=800&q=90"
+                    alt="Fresh Banana">
+
             </div>
 
             <div class="product-info">
 
-                <span class="product-category">
-                    FRUIT
-                </span>
+                <span class="product-category">FRUIT</span>
 
                 <h3>Fresh Banana</h3>
 
@@ -215,55 +236,29 @@
                 </div>
 
                 <a href="#order" class="product-btn">
-                    Add to Order
+                    Order Now
                 </a>
 
             </div>
 
-        </article>
+        </div>
 
 
-        <article class="product-card">
+        <div class="product-card">
 
-            <div class="product-image orange">
-                🍊
+            <div class="product-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=800&q=90"
+                    alt="Fresh Mango">
+
             </div>
 
             <div class="product-info">
 
-                <span class="product-category">
-                    FRUIT
-                </span>
+                <span class="product-category">FRUIT</span>
 
-                <h3>Fresh Orange</h3>
-
-                <div class="price-row">
-                    <strong>₹100</strong>
-                    <span>/ kg</span>
-                </div>
-
-                <a href="#order" class="product-btn">
-                    Add to Order
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <article class="product-card">
-
-            <div class="product-image grapes">
-                🍇
-            </div>
-
-            <div class="product-info">
-
-                <span class="product-category">
-                    FRUIT
-                </span>
-
-                <h3>Fresh Grapes</h3>
+                <h3>Fresh Mango</h3>
 
                 <div class="price-row">
                     <strong>₹120</strong>
@@ -271,12 +266,42 @@
                 </div>
 
                 <a href="#order" class="product-btn">
-                    Add to Order
+                    Order Now
                 </a>
 
             </div>
 
-        </article>
+        </div>
+
+
+        <div class="product-card">
+
+            <div class="product-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1547514701-42782101795e?auto=format&fit=crop&w=800&q=90"
+                    alt="Fresh Orange">
+
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">FRUIT</span>
+
+                <h3>Fresh Orange</h3>
+
+                <div class="price-row">
+                    <strong>₹90</strong>
+                    <span>/ kg</span>
+                </div>
+
+                <a href="#order" class="product-btn">
+                    Order Now
+                </a>
+
+            </div>
+
+        </div>
 
     </div>
 
@@ -288,14 +313,12 @@
 
     <div class="section-heading">
 
-        <span>FARM FRESH</span>
+        <span>FRESH MARKET</span>
 
-        <h2>
-            Fresh Vegetables
-        </h2>
+        <h2>Daily Vegetables</h2>
 
         <p>
-            Everyday vegetables for your everyday kitchen.
+            Fresh vegetables selected for your family.
         </p>
 
     </div>
@@ -303,40 +326,88 @@
 
     <div class="vegetable-grid">
 
+
         <div class="mini-product">
-            <div>🍅</div>
+
+            <div>
+                <img src="https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=400&q=90"
+                     alt="Tomato">
+            </div>
+
             <h3>Tomato</h3>
+
             <strong>₹40/kg</strong>
+
         </div>
 
+
         <div class="mini-product">
-            <div>🥔</div>
+
+            <div>
+                <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=400&q=90"
+                     alt="Potato">
+            </div>
+
             <h3>Potato</h3>
+
             <strong>₹30/kg</strong>
+
         </div>
 
+
         <div class="mini-product">
-            <div>🧅</div>
+
+            <div>
+                <img src="https://images.unsplash.com/photo-1518977956812-cd3dbadaaf31?auto=format&fit=crop&w=400&q=90"
+                     alt="Onion">
+            </div>
+
             <h3>Onion</h3>
+
             <strong>₹35/kg</strong>
+
         </div>
 
+
         <div class="mini-product">
-            <div>🥕</div>
+
+            <div>
+                <img src="https://images.unsplash.com/photo-1582515073490-39981397c445?auto=format&fit=crop&w=400&q=90"
+                     alt="Capsicum">
+            </div>
+
+            <h3>Capsicum</h3>
+
+            <strong>₹70/kg</strong>
+
+        </div>
+
+
+        <div class="mini-product">
+
+            <div>
+                <img src="https://images.unsplash.com/photo-1597362925123-77861d3fbac7?auto=format&fit=crop&w=400&q=90"
+                     alt="Carrot">
+            </div>
+
             <h3>Carrot</h3>
-            <strong>₹60/kg</strong>
+
+            <strong>₹50/kg</strong>
+
         </div>
 
-        <div class="mini-product">
-            <div>🥒</div>
-            <h3>Cucumber</h3>
-            <strong>₹45/kg</strong>
-        </div>
 
         <div class="mini-product">
-            <div>🥦</div>
+
+            <div>
+                <img src="https://images.unsplash.com/photo-1598030343246-eec71b2f7b0f?auto=format&fit=crop&w=400&q=90"
+                     alt="Broccoli">
+            </div>
+
             <h3>Broccoli</h3>
-            <strong>₹80/pc</strong>
+
+            <strong>₹80/kg</strong>
+
         </div>
 
     </div>
@@ -349,41 +420,44 @@
 
     <div class="offer-content">
 
-        <span>🔥 LIMITED DAILY OFFER</span>
+        <span>WEEKLY FRESH DEAL</span>
 
         <h2>
-            Freshness Delivered<br>
-            To Your Door
+            Fresh Food.<br>
+            Better Prices.
         </h2>
 
         <p>
-            Order your daily fruits & vegetables
-            easily through WhatsApp.
+            Check today's market rates and order
+            your fresh produce directly on WhatsApp.
         </p>
 
         <a href="#order" class="offer-btn">
-            Start Your Order →
+            View Today's Rates →
         </a>
 
     </div>
 
+
     <div class="offer-visual">
-        🛒
+
+        <img
+            src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=700&q=90"
+            alt="Fresh fruits and vegetables">
+
     </div>
 
 </section>
 
 
-<!-- DELIVERY -->
-<section class="delivery-section">
+<!-- BENEFITS -->
+<section class="products-section">
 
     <div class="section-heading">
 
-        <span>WHY NAND LAL?</span>
+        <span>WHY NAND LAL</span>
 
-        <h2>
-            Simple. Fresh. Reliable.
-        </h2>
+        <h2>Freshness You Can Trust</h2>
 
     </div>
 
@@ -392,26 +466,26 @@
 
         <div class="benefit">
             <div>🥬</div>
-            <h3>Fresh Selection</h3>
-            <p>Products selected with quality in mind.</p>
+            <h3>Fresh Daily</h3>
+            <p>Fresh stock selected every day.</p>
         </div>
 
         <div class="benefit">
-            <div>💰</div>
-            <h3>Daily Prices</h3>
-            <p>Prices can be updated according to the market.</p>
+            <div>🔍</div>
+            <h3>Quality Checked</h3>
+            <p>Only good quality produce.</p>
         </div>
 
         <div class="benefit">
             <div>🚚</div>
-            <h3>Local Delivery</h3>
-            <p>Convenient delivery for customers around Mohali.</p>
+            <h3>Fast Delivery</h3>
+            <p>Quick delivery around Mohali.</p>
         </div>
 
         <div class="benefit">
-            <div>📱</div>
+            <div>💬</div>
             <h3>Easy Ordering</h3>
-            <p>Place your order directly through WhatsApp.</p>
+            <p>Simply order through WhatsApp.</p>
         </div>
 
     </div>
@@ -427,25 +501,24 @@
         <span>READY TO ORDER?</span>
 
         <h2>
-            Your Fresh Basket<br>
-            Is Just One Message Away.
+            Freshness Is<br>
+            Just One Message Away.
         </h2>
 
         <p>
             Send us your shopping list on WhatsApp
-            and we'll take care of the rest.
+            and we'll prepare your fresh order.
         </p>
 
         <a
-            href="https://wa.me/919999999999"
+            href="https://wa.me/91XXXXXXXXXX"
             class="whatsapp-btn"
-            target="_blank"
-        >
+            target="_blank">
             💬 Order on WhatsApp
         </a>
 
         <small>
-            Replace the WhatsApp number with your real business number.
+            Replace XXXXXXXX with your actual WhatsApp number.
         </small>
 
     </div>
@@ -458,10 +531,10 @@
 
     <div class="footer-brand">
 
-        <h2>🍎 Nand Lal</h2>
+        <h2>🍎 Nand Lal Fresh Market</h2>
 
         <p>
-            Fresh Fruits & Vegetables
+            Fresh Fruits & Vegetables • Mohali
         </p>
 
     </div>
@@ -469,20 +542,20 @@
     <div class="footer-info">
 
         <p>📍 Mohali, Punjab</p>
-        <p>🚚 Local Home Delivery</p>
+
+        <p>🚚 Home Delivery Available</p>
+
         <p>💬 WhatsApp Orders</p>
 
     </div>
 
     <div class="footer-bottom">
 
-        © 2027 Nand Lal Fresh Market.
-        All Rights Reserved.
+        © 2027 Nand Lal Fresh Market. All Rights Reserved.
 
     </div>
 
 </footer>
-
 
 </body>
 </html>
