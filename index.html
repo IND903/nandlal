@@ -1,36 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">              
-<head>  
-  <link rel="stylesheet" href="style.css">
+<html lang="en">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Nand Lal Fresh Market | Fresh Fruits & Vegetables</title>
 
-  <style> 
-    <link rel="stylesheet" href="style.css">
+  <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f8faf4;
-      color: #102217;
+    html {
+      scroll-behavior: smooth;
     }
 
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7faf6;
+      color: #17351f;
+    }
+
+    /* TOP BAR */
     .topbar {
       background: #07551f;
       color: white;
-      padding: 11px 6%;
+      padding: 10px 6%;
       display: flex;
       justify-content: space-between;
-      align-items: center;
       font-size: 14px;
-      font-weight: 600;
     }
 
+    /* NAVBAR */
     .navbar {
       background: white;
       min-height: 88px;
@@ -38,142 +41,145 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid #e7ece5;
-      position: relative;
-      z-index: 5;
+      border-bottom: 1px solid #e5ece6;
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 13px;
+      gap: 12px;
     }
 
     .logo-icon {
-      width: 54px;
-      height: 54px;
-      border-radius: 16px;
-      background: #e9f5e7;
+      width: 52px;
+      height: 52px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 32px;
+      background: #e9f7ec;
+      border-radius: 15px;
+      font-size: 28px;
     }
 
     .logo h1 {
-      font-size: 28px;
-      line-height: 1;
-      color: #124b25;
+      font-size: 25px;
+      color: #07551f;
     }
 
     .logo span {
-      display: block;
-      margin-top: 7px;
-      letter-spacing: 4px;
-      font-size: 11px;
-      font-weight: 700;
-      color: #53725c;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: #6c796f;
+      font-weight: bold;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 34px;
+      gap: 25px;
     }
 
     .nav-links a {
       text-decoration: none;
-      color: #16231a;
-      font-weight: 600;
+      color: #26382b;
       font-size: 15px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: #198754;
     }
 
     .order-btn {
-      background: #07551f;
+      background: #198754;
       color: white !important;
-      padding: 15px 25px;
-      border-radius: 30px;
-      box-shadow: 0 8px 20px rgba(7,85,31,.18);
+      padding: 12px 18px;
+      border-radius: 10px;
     }
 
+    /* HERO */
     .hero {
-      min-height: 650px;
-      display: grid;
-      grid-template-columns: 45% 55%;
+      min-height: 620px;
+      padding: 70px 7%;
+      display: flex;
       align-items: center;
-      padding: 55px 6%;
-      background:
-        radial-gradient(circle at 30% 30%, #ffffff 0%, #f7faef 55%, #edf5df 100%);
+      justify-content: space-between;
+      gap: 45px;
       overflow: hidden;
+      background: linear-gradient(135deg, #f5fff7, #ffffff, #eaf7ed);
     }
 
     .hero-content {
-      padding-right: 35px;
-      position: relative;
+      max-width: 600px;
       z-index: 2;
     }
 
     .badge {
       display: inline-block;
-      background: #e6f3df;
-      color: #185c2c;
-      padding: 10px 17px;
+      padding: 9px 17px;
+      margin-bottom: 20px;
       border-radius: 30px;
+      background: #e3f5e7;
+      color: #198754;
       font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 25px;
+      font-weight: bold;
+      letter-spacing: 1px;
     }
 
     .hero h2 {
-      font-size: clamp(48px, 5vw, 76px);
-      line-height: .98;
-      letter-spacing: -3px;
-      color: #101a14;
-      margin-bottom: 25px;
+      font-size: clamp(43px, 5vw, 68px);
+      line-height: 1.04;
+      color: #17351f;
     }
 
     .hero h2 strong {
-      color: #08752e;
+      display: block;
+      color: #198754;
     }
 
-    .hero p {
-      max-width: 520px;
-      font-size: 18px;
+    .hero-content > p {
+      max-width: 540px;
+      margin: 25px 0 30px;
+      color: #5e6c62;
+      font-size: 17px;
       line-height: 1.7;
-      color: #617066;
-      margin-bottom: 30px;
     }
 
     .buttons {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
+      gap: 14px;
     }
 
-    .primary-btn,
-    .secondary-btn {
+    .buttons a {
       text-decoration: none;
-      padding: 16px 24px;
+      padding: 15px 22px;
       border-radius: 12px;
-      font-weight: 700;
-      display: inline-block;
+      font-weight: bold;
+      transition: 0.25s;
     }
 
     .primary-btn {
-      background: #07551f;
+      background: #198754;
       color: white;
-      box-shadow: 0 12px 25px rgba(7,85,31,.2);
+      box-shadow: 0 10px 25px rgba(25,135,84,0.2);
     }
 
     .secondary-btn {
       background: white;
-      color: #07551f;
-      border: 1px solid #dfe8dc;
+      color: #198754;
+      border: 1px solid #cfe6d4;
     }
 
+    .buttons a:hover {
+      transform: translateY(-3px);
+    }
+
+    /* HERO IMAGE */
     .hero-visual {
-      min-height: 520px;
       position: relative;
+      width: 48%;
+      min-height: 470px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -181,121 +187,122 @@
 
     .hero-circle {
       position: absolute;
-      width: 520px;
-      height: 520px;
+      width: 400px;
+      height: 400px;
       border-radius: 50%;
-      background: #e7f0c9;
-      right: -30px;
-      top: 10px;
+      background: #dff3e3;
     }
 
     .basket-image {
-      width: 100%;
-      max-width: 650px;
       position: relative;
-      z-index: 1;
-      filter: drop-shadow(0 25px 25px rgba(40,60,30,.18));
-      border-radius: 25px;
+      z-index: 2;
+      width: 430px;
+      height: 430px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 10px solid white;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.15);
     }
 
     .floating-card {
       position: absolute;
       z-index: 3;
-      right: 10px;
-      bottom: 35px;
-      width: 230px;
-      background: rgba(255,255,255,.96);
-      padding: 23px;
-      border-radius: 22px;
-      box-shadow: 0 18px 45px rgba(20,50,25,.16);
+      right: 0;
+      bottom: 20px;
+      width: 220px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.97);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
     }
 
     .floating-card small {
-      color: #26733a;
-      font-weight: 700;
+      color: #198754;
+      font-size: 10px;
+      font-weight: bold;
     }
 
     .floating-card h3 {
-      margin: 12px 0 7px;
-      font-size: 22px;
+      margin: 8px 0;
+      color: #17351f;
     }
 
     .floating-card p {
-      margin: 0;
-      font-size: 14px;
+      color: #68756c;
+      font-size: 13px;
       line-height: 1.5;
     }
 
+    /* FEATURES */
     .features {
-      background: white;
       display: grid;
-      grid-template-columns: repeat(4,1fr);
-      padding: 25px 6%;
-      border-top: 1px solid #e8eee6;
-      border-bottom: 1px solid #e8eee6;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 35px 7%;
+      background: white;
     }
 
     .feature {
       text-align: center;
-      padding: 12px;
-      border-right: 1px solid #e5eae4;
-    }
-
-    .feature:last-child {
-      border-right: none;
+      padding: 22px;
+      border-radius: 18px;
+      background: #f7fbf7;
     }
 
     .feature-icon {
-      font-size: 28px;
+      font-size: 30px;
       margin-bottom: 8px;
     }
 
     .feature h3 {
-      color: #125728;
-      font-size: 18px;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
+      color: #17351f;
     }
 
     .feature p {
-      color: #748077;
-      font-size: 13px;
+      color: #68756c;
     }
 
+    /* SECTION */
     .section {
-      padding: 75px 6%;
+      padding: 75px 7%;
       text-align: center;
     }
 
-    .section h2 {
-      font-size: 42px;
-      color: #123b20;
-      margin-bottom: 12px;
+    .section > h2 {
+      font-size: 38px;
+      margin-bottom: 10px;
+      color: #17351f;
     }
 
     .section > p {
       color: #68756c;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
 
+    /* CARDS */
     .cards {
       display: grid;
-      grid-template-columns: repeat(3,1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 25px;
-      max-width: 1100px;
-      margin: auto;
     }
 
     .card {
-      background: white;
-      border-radius: 22px;
       overflow: hidden;
-      box-shadow: 0 12px 35px rgba(20,50,25,.08);
+      background: white;
+      border-radius: 20px;
       text-align: left;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+      transition: 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
     }
 
     .card img {
       width: 100%;
-      height: 230px;
+      height: 240px;
       object-fit: cover;
     }
 
@@ -304,46 +311,92 @@
     }
 
     .card-content h3 {
-      color: #164d27;
       margin-bottom: 8px;
+      color: #17351f;
     }
 
     .card-content p {
-      color: #718077;
+      color: #68756c;
       line-height: 1.5;
     }
 
-    footer {
-      background: #073d19;
-      color: white;
+    /* CONTACT */
+    .contact {
+      padding: 70px 7%;
       text-align: center;
-      padding: 35px 20px;
+      background: #07551f;
+      color: white;
     }
 
-    footer p {
-      margin: 7px 0;
-      color: #d7e7da;
+    .contact h2 {
+      font-size: 36px;
+      margin-bottom: 12px;
     }
 
-    @media (max-width: 900px) {
-      .nav-links {
-        gap: 14px;
+    .contact p {
+      margin-bottom: 25px;
+      color: #d9eadc;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      padding: 15px 25px;
+      background: white;
+      color: #07551f;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 20px;
+      text-align: center;
+      background: #043b16;
+      color: #c9dfce;
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 850px) {
+
+      .topbar {
+        text-align: center;
+        justify-content: center;
       }
 
-      .order-btn {
+      .topbar span {
         display: none;
       }
 
+      .navbar {
+        flex-direction: column;
+        padding: 18px 5%;
+        gap: 18px;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .nav-links a {
+        font-size: 13px;
+      }
+
       .hero {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        text-align: center;
+        padding: 55px 6%;
       }
 
       .hero-content {
-        padding-right: 0;
-        text-align: center;
+        max-width: 100%;
       }
 
-      .hero p {
+      .hero-content > p {
         margin-left: auto;
         margin-right: auto;
       }
@@ -353,11 +406,26 @@
       }
 
       .hero-visual {
-        margin-top: 30px;
+        width: 100%;
+        min-height: 380px;
+      }
+
+      .hero-circle {
+        width: 300px;
+        height: 300px;
+      }
+
+      .basket-image {
+        width: 320px;
+        height: 320px;
+      }
+
+      .floating-card {
+        right: 2%;
       }
 
       .features {
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .cards {
@@ -365,46 +433,42 @@
       }
     }
 
-    @media (max-width: 600px) {
-      .topbar {
-        padding: 9px 15px;
-        font-size: 11px;
-      }
-
-      .navbar {
-        padding: 12px 18px;
-      }
+    @media (max-width: 480px) {
 
       .logo h1 {
-        font-size: 22px;
-      }
-
-      .nav-links a {
-        display: none;
+        font-size: 21px;
       }
 
       .hero {
-        padding: 45px 20px;
+        padding-top: 40px;
       }
 
       .hero h2 {
-        font-size: 48px;
+        font-size: 40px;
+      }
+
+      .hero-visual {
+        min-height: 330px;
       }
 
       .hero-circle {
-        width: 330px;
-        height: 330px;
+        width: 250px;
+        height: 250px;
+      }
+
+      .basket-image {
+        width: 270px;
+        height: 270px;
       }
 
       .floating-card {
-        right: 0;
-        bottom: 5px;
-        width: 190px;
+        width: 175px;
+        padding: 14px;
       }
 
       .features {
-        grid-template-columns: 1fr 1fr;
-        padding: 20px 10px;
+        gap: 10px;
+        padding: 25px 5%;
       }
     }
   </style>
@@ -413,14 +477,15 @@
 <body>
 
   <div class="topbar">
-    <span>🌿 Fresh • Clean • Quality</span>
-    <span>📍 Mohali Home Delivery</span>
+    <span>🌿 Fresh Quality • Honest Prices • Local Delivery</span>
+    <span>📍 Mohali, Punjab</span>
   </div>
 
   <nav class="navbar">
 
     <div class="logo">
       <div class="logo-icon">🧺</div>
+
       <div>
         <h1>Nand Lal</h1>
         <span>FRESH MARKET</span>
@@ -457,6 +522,7 @@
         </p>
 
         <div class="buttons">
+
           <a href="#fruits" class="primary-btn">
             Explore Fresh Items →
           </a>
@@ -464,6 +530,7 @@
           <a href="#contact" class="secondary-btn">
             🟢 Order on WhatsApp
           </a>
+
         </div>
 
       </div>
@@ -481,7 +548,9 @@
         <div class="floating-card">
           <small>🌱 TODAY'S FRESH PICK</small>
           <h3>Farm Fresh</h3>
-          <p>Freshly selected with care for your family.</p>
+          <p>
+            Freshly selected with care for your family.
+          </p>
         </div>
 
       </div>
@@ -519,53 +588,77 @@
     <section class="section" id="fruits">
 
       <h2>Fresh Picks</h2>
-      <p>Handpicked fruits and vegetables for your everyday needs.</p>
+
+      <p>
+        Handpicked fruits and vegetables for your everyday needs.
+      </p>
 
       <div class="cards">
 
         <div class="card">
+
           <img
             src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=800&q=90"
             alt="Fresh apples"
           >
+
           <div class="card-content">
             <h3>Fresh Apples</h3>
             <p>Crisp, fresh and carefully selected.</p>
           </div>
+
         </div>
 
         <div class="card" id="vegetables">
+
           <img
             src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=90"
             alt="Fresh vegetables"
           >
+
           <div class="card-content">
             <h3>Fresh Vegetables</h3>
             <p>Daily fresh vegetables for your kitchen.</p>
           </div>
+
         </div>
 
         <div class="card" id="offers">
+
           <img
             src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=800&q=90"
             alt="Fresh fruits"
           >
+
           <div class="card-content">
             <h3>Daily Fresh Fruits</h3>
             <p>Quality fruits at competitive local prices.</p>
           </div>
+
         </div>
 
       </div>
 
     </section>
 
+    <section class="contact" id="contact">
+
+      <h2>Freshness Is Just A Message Away</h2>
+
+      <p>
+        Order fresh fruits and vegetables directly on WhatsApp.
+      </p>
+
+      <a class="contact-btn" href="https://wa.me/">
+        💬 Order on WhatsApp
+      </a>
+
+    </section>
+
   </main>
 
-  <footer id="contact">
-    <h2>Nand Lal Fresh Market</h2>
-    <p>Fresh Fruits • Fresh Vegetables • Mohali Delivery</p>
-    <p>© 2027 Nand Lal Fresh Market. All Rights Reserved.</p>
+  <footer>
+    © 2026 Nand Lal Fresh Market • Fresh Fruits & Vegetables
   </footer>
 
 </body>
