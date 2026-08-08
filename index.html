@@ -23,10 +23,9 @@
       color: #17351f;
     }
 
-    /* TOP BAR */
     .topbar {
       background: #07551f;
-      color: #fff;
+      color: white;
       padding: 10px 6%;
       display: flex;
       justify-content: space-between;
@@ -34,11 +33,10 @@
       font-size: 14px;
     }
 
-    /* NAVBAR */
     .navbar {
       min-height: 88px;
       padding: 0 6%;
-      background: #fff;
+      background: white;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -97,12 +95,11 @@
 
     .order-btn {
       background: #198754;
-      color: #fff !important;
+      color: white !important;
       padding: 12px 18px;
       border-radius: 10px;
     }
 
-    /* HERO */
     .hero {
       min-height: 620px;
       padding: 75px 7%;
@@ -111,9 +108,7 @@
       justify-content: space-between;
       gap: 45px;
       overflow: hidden;
-      background:
-        radial-gradient(circle at 85% 50%, #dff3e3 0, #dff3e3 12%, transparent 35%),
-        linear-gradient(135deg, #f5fff7, #ffffff 55%, #edf8ef);
+      background: linear-gradient(135deg, #f5fff7, #ffffff 55%, #edf8ef);
     }
 
     .hero-content {
@@ -170,14 +165,14 @@
     }
 
     .primary-btn {
-      color: #fff;
+      color: white;
       background: #198754;
-      box-shadow: 0 10px 25px rgba(25, 135, 84, 0.22);
+      box-shadow: 0 10px 25px rgba(25,135,84,0.22);
     }
 
     .secondary-btn {
       color: #198754;
-      background: #fff;
+      background: white;
       border: 1px solid #cfe6d4;
     }
 
@@ -185,7 +180,6 @@
       transform: translateY(-3px);
     }
 
-    /* HERO IMAGE */
     .hero-visual {
       width: 48%;
       min-height: 470px;
@@ -209,7 +203,7 @@
       position: relative;
       z-index: 2;
       object-fit: cover;
-      border: 10px solid #fff;
+      border: 10px solid white;
       border-radius: 50%;
       box-shadow: 0 25px 60px rgba(0,0,0,0.15);
     }
@@ -243,13 +237,12 @@
       line-height: 1.5;
     }
 
-    /* FEATURES */
     .features {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
       padding: 35px 7%;
-      background: #fff;
+      background: white;
     }
 
     .feature {
@@ -273,7 +266,6 @@
       color: #68756c;
     }
 
-    /* PRODUCTS */
     .section {
       padding: 75px 7%;
       text-align: center;
@@ -299,7 +291,7 @@
     .card {
       overflow: hidden;
       text-align: left;
-      background: #fff;
+      background: white;
       border-radius: 20px;
       box-shadow: 0 10px 35px rgba(0,0,0,0.08);
       transition: 0.25s;
@@ -330,11 +322,10 @@
       line-height: 1.5;
     }
 
-    /* CONTACT */
     .contact {
       padding: 75px 7%;
       text-align: center;
-      color: #fff;
+      color: white;
       background: #07551f;
     }
 
@@ -352,13 +343,12 @@
       display: inline-block;
       padding: 15px 25px;
       color: #07551f;
-      background: #fff;
+      background: white;
       border-radius: 12px;
       text-decoration: none;
       font-weight: bold;
     }
 
-    /* FOOTER */
     footer {
       padding: 20px;
       text-align: center;
@@ -367,7 +357,6 @@
       font-size: 13px;
     }
 
-    /* MOBILE */
     @media (max-width: 850px) {
 
       .topbar {
@@ -447,10 +436,6 @@
 
       .logo h1 {
         font-size: 21px;
-      }
-
-      .hero {
-        padding-top: 40px;
       }
 
       .hero h2 {
@@ -558,9 +543,7 @@
         <div class="floating-card">
           <small>🌱 TODAY'S FRESH PICK</small>
           <h3>Farm Fresh</h3>
-          <p>
-            Freshly selected with care for your family.
-          </p>
+          <p>Freshly selected with care for your family.</p>
         </div>
 
       </div>
@@ -608,3 +591,68 @@
         <div class="card">
 
           <img
+            src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=800&q=90"
+            alt="Fresh apples"
+          >
+
+          <div class="card-content">
+            <h3>Fresh Apples</h3>
+            <p>Crisp, fresh and carefully selected.</p>
+          </div>
+
+        </div>
+
+        <div class="card" id="vegetables">
+
+          <img
+            src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=90"
+            alt="Fresh vegetables"
+          >
+
+          <div class="card-content">
+            <h3>Fresh Vegetables</h3>
+            <p>Daily fresh vegetables for your kitchen.</p>
+          </div>
+
+        </div>
+
+        <div class="card" id="offers">
+
+          <img
+            src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=800&q=90"
+            alt="Fresh fruits"
+          >
+
+          <div class="card-content">
+            <h3>Daily Fresh Fruits</h3>
+            <p>Quality fruits at competitive local prices.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="contact" id="contact">
+
+      <h2>Freshness Is Just A Message Away</h2>
+
+      <p>
+        Order fresh fruits and vegetables directly on WhatsApp.
+      </p>
+
+      <a class="contact-btn" href="https://wa.me/">
+        💬 Order on WhatsApp
+      </a>
+
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Nand Lal Fresh Market • Fresh Fruits & Vegetables
+  </footer>
+
+</body>
+</html>
