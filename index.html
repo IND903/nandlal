@@ -1,1 +1,1585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nand Lal Fresh Market</title>
 
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;background:#f6f8f6;color:#172018}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+
+:root{
+  --green:#0b7a3b;
+  --dark:#075b2c;
+  --light:#edf8f0;
+  --border:#e3e8e4;
+}
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#fff;
+  border-bottom:1px solid var(--border);
+}
+
+.header-inner{
+  max-width:1180px;
+  margin:auto;
+  padding:13px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.logo h1{font-size:21px;color:var(--dark)}
+.logo p{font-size:11px;color:#68716b;margin-top:3px}
+
+.cart-btn{
+  position:relative;
+  border:0;
+  background:var(--green);
+  color:white;
+  padding:11px 17px;
+  border-radius:25px;
+  font-weight:700;
+}
+
+.cart-badge{
+  position:absolute;
+  right:-5px;
+  top:-7px;
+  min-width:21px;
+  height:21px;
+  padding:0 5px;
+  background:#e53935;
+  border-radius:50%;
+  font-size:11px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.hero{
+  max-width:1180px;
+  margin:auto;
+  padding:20px 16px 10px;
+}
+
+.hero-box{
+  border-radius:22px;
+  padding:28px 22px;
+  background:linear-gradient(110deg,#e8f7ec,#fff);
+}
+
+.hero h2{
+  color:var(--dark);
+  font-size:30px;
+  margin-bottom:8px;
+}
+
+.hero p{
+  color:#5f6962;
+  line-height:1.5;
+}
+
+.search-wrap{
+  max-width:1180px;
+  margin:auto;
+  padding:12px 16px;
+}
+
+.search{
+  width:100%;
+  padding:14px 18px;
+  border:1px solid #dfe5e0;
+  border-radius:14px;
+  background:white;
+  outline:none;
+  box-shadow:0 2px 10px rgba(0,0,0,.04);
+}
+
+.categories{
+  max-width:1180px;
+  margin:auto;
+  padding:5px 16px 14px;
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+}
+
+.category{
+  flex:0 0 auto;
+  border:1px solid #dce4de;
+  background:white;
+  color:#435047;
+  padding:9px 15px;
+  border-radius:22px;
+  font-size:13px;
+}
+
+.category.active{
+  background:var(--green);
+  color:#fff;
+  border-color:var(--green);
+}
+
+.shop{
+  max-width:1180px;
+  margin:auto;
+  padding:5px 16px 90px;
+}
+
+.section-title{
+  margin:12px 0 15px;
+}
+
+.section-title h2{font-size:23px}
+.section-title p{color:#707970;font-size:13px;margin-top:4px}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.product{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:17px;
+  overflow:hidden;
+  box-shadow:0 3px 14px rgba(0,0,0,.045);
+  transition:.15s;
+}
+
+.product:hover{
+  transform:translateY(-2px);
+  box-shadow:0 7px 20px rgba(0,0,0,.08);
+}
+
+.product-img{
+  width:100%;
+  height:175px;
+  object-fit:cover;
+  background:#f3f6f3;
+  display:block;
+}
+
+.product-info{padding:13px}
+
+.product-name{
+  font-size:16px;
+  font-weight:700;
+  margin-bottom:5px;
+}
+
+.product-price{
+  color:var(--green);
+  font-size:15px;
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.measure-row{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.measure-input{
+  width:100%;
+  padding:9px;
+  border:1px solid #d8e0da;
+  border-radius:9px;
+  outline:none;
+}
+
+.measure-unit{
+  min-width:58px;
+  padding:9px 5px;
+  background:#f3f6f3;
+  border-radius:9px;
+  text-align:center;
+  font-size:13px;
+}
+
+.qty-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:11px;
+}
+
+.qty-control{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.qty-control button{
+  width:31px;
+  height:31px;
+  border:1px solid #d4ddd6;
+  background:white;
+  border-radius:8px;
+  color:var(--green);
+  font-size:20px;
+  line-height:1;
+}
+
+.qty-number{
+  min-width:20px;
+  text-align:center;
+  font-weight:bold;
+}
+
+.add{
+  border:0;
+  background:var(--green);
+  color:white;
+  padding:9px 13px;
+  border-radius:9px;
+  font-size:13px;
+  font-weight:700;
+}
+
+.add:active{transform:scale(.96)}
+
+.no-results{
+  display:none;
+  text-align:center;
+  padding:40px;
+  color:#777;
+}
+
+/* CART */
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  z-index:1900;
+  display:none;
+}
+
+.overlay.show{display:block}
+
+.cart{
+  position:fixed;
+  right:-500px;
+  top:0;
+  width:min(480px,100%);
+  height:100vh;
+  background:#f7f9f7;
+  z-index:2000;
+  transition:.28s;
+  overflow-y:auto;
+}
+
+.cart.open{right:0}
+
+.cart-head{
+  position:sticky;
+  top:0;
+  z-index:5;
+  padding:15px;
+  background:white;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.close{
+  width:35px;
+  height:35px;
+  border:0;
+  border-radius:50%;
+  background:#eef1ee;
+  font-size:21px;
+}
+
+.cart-body{padding:14px}
+
+.cart-item{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:12px;
+  margin-bottom:10px;
+}
+
+.cart-top{
+  display:flex;
+  gap:10px;
+  justify-content:space-between;
+}
+
+.cart-title{font-weight:700}
+
+.remove{
+  border:0;
+  background:#fff0f0;
+  color:#d93030;
+  width:30px;
+  height:30px;
+  border-radius:8px;
+}
+
+.cart-details{
+  color:#667068;
+  font-size:13px;
+  line-height:1.7;
+  margin-top:5px;
+}
+
+.cart-edit{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:9px;
+}
+
+.cart-edit button{
+  width:31px;
+  height:31px;
+  border:0;
+  background:var(--green);
+  color:#fff;
+  border-radius:8px;
+  font-size:19px;
+}
+
+.cart-edit input{
+  width:85px;
+  padding:7px;
+  border:1px solid #d7dfd8;
+  border-radius:8px;
+  text-align:center;
+}
+
+.cart-amount{
+  margin-left:auto;
+  font-weight:bold;
+  color:var(--green);
+}
+
+.total-box{
+  background:var(--light);
+  border-radius:13px;
+  padding:15px;
+  margin:13px 0;
+}
+
+.total-line{
+  display:flex;
+  justify-content:space-between;
+  margin:5px 0;
+  color:#59625b;
+}
+
+.grand{
+  border-top:1px solid #cfe2d3;
+  padding-top:10px;
+  margin-top:10px;
+  font-size:19px;
+  color:#123b20;
+  font-weight:700;
+}
+
+.checkout{
+  background:white;
+  border-radius:14px;
+  padding:14px;
+  border:1px solid var(--border);
+}
+
+.checkout h3{margin-bottom:12px}
+
+.field{
+  width:100%;
+  border:1px solid #d7dfd8;
+  border-radius:9px;
+  padding:12px;
+  margin-bottom:9px;
+  outline:none;
+}
+
+textarea.field{
+  min-height:85px;
+  resize:vertical;
+}
+
+.location{
+  width:100%;
+  border:1px solid var(--green);
+  background:#f0faf2;
+  color:var(--green);
+  border-radius:9px;
+  padding:11px;
+  font-weight:700;
+  margin-bottom:9px;
+}
+
+.place-order{
+  width:100%;
+  border:0;
+  background:#25d366;
+  color:#fff;
+  border-radius:10px;
+  padding:14px;
+  font-size:16px;
+  font-weight:700;
+}
+
+.empty{
+  text-align:center;
+  padding:45px 15px;
+  color:#777;
+}
+
+.bottom-cart{
+  position:fixed;
+  bottom:15px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(500px,calc(100% - 28px));
+  z-index:1500;
+  display:none;
+}
+
+.bottom-cart button{
+  width:100%;
+  border:0;
+  background:var(--green);
+  color:white;
+  padding:14px 18px;
+  border-radius:14px;
+  box-shadow:0 8px 25px rgba(0,0,0,.2);
+  display:flex;
+  justify-content:space-between;
+  font-weight:700;
+}
+
+footer{
+  background:#103a20;
+  color:white;
+  text-align:center;
+  padding:25px 15px;
+  font-size:13px;
+}
+
+@media(max-width:900px){
+  .products{grid-template-columns:repeat(3,1fr)}
+}
+
+@media(max-width:650px){
+  .products{grid-template-columns:repeat(2,1fr);gap:10px}
+  .product-img{height:145px}
+  .product-info{padding:10px}
+  .product-name{font-size:14px}
+  .add{padding:8px 9px;font-size:12px}
+  .hero h2{font-size:24px}
+}
+
+@media(max-width:430px){
+  .products{grid-template-columns:repeat(2,1fr)}
+  .product-img{height:125px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <h1>🥬 Nand Lal Fresh Market</h1>
+      <p>Fresh Fruits & Vegetables • Easy Home Delivery</p>
+    </div>
+
+    <button class="cart-btn" onclick="openCart()">
+      🛒 Cart
+      <span class="cart-badge" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-box">
+    <h2>Fresh Market, At Your Door</h2>
+    <p>
+      Choose multiple fruits & vegetables, adjust quantity or actual weight,
+      review everything in your cart and place one complete order.
+    </p>
+  </div>
+</section>
+
+<div class="search-wrap">
+  <input
+    id="search"
+    class="search"
+    type="search"
+    placeholder="🔎 Search fruits, vegetables..."
+    oninput="renderProducts()"
+  >
+</div>
+
+<div class="categories">
+  <button class="category active" onclick="setCategory('All',this)">All</button>
+  <button class="category" onclick="setCategory('Fruits',this)">🍎 Fruits</button>
+  <button class="category" onclick="setCategory('Vegetables',this)">🥬 Vegetables</button>
+  <button class="category" onclick="setCategory('Leafy',this)">🌿 Leafy & Herbs</button>
+</div>
+
+<section class="shop">
+
+  <div class="section-title">
+    <h2>Fresh Produce</h2>
+    <p>Select as many items as you need</p>
+  </div>
+
+  <div class="products" id="products"></div>
+
+  <div class="no-results" id="noResults">
+    No product found.
+  </div>
+
+</section>
+
+<div class="bottom-cart" id="bottomCart">
+  <button onclick="openCart()">
+    <span>🛒 <span id="bottomItems">0</span> items in cart</span>
+    <span>₹<span id="bottomTotal">0</span> →</span>
+  </button>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+<aside class="cart" id="cart">
+
+  <div class="cart-head">
+    <strong>🛒 Your Cart</strong>
+    <button class="close" onclick="closeCart()">×</button>
+  </div>
+
+  <div class="cart-body">
+
+    <div id="cartItems"></div>
+
+    <div class="total-box">
+
+      <div class="total-line">
+        <span>Items</span>
+        <span id="summaryItems">0</span>
+      </div>
+
+      <div class="total-line">
+        <span>Subtotal</span>
+        <span>₹<span id="subtotal">0.00</span></span>
+      </div>
+
+      <div class="total-line">
+        <span>Delivery</span>
+        <span id="deliveryText">Free</span>
+      </div>
+
+      <div class="total-line grand">
+        <span>Total</span>
+        <span>₹<span id="grandTotal">0.00</span></span>
+      </div>
+
+    </div>
+
+    <div class="checkout">
+
+      <h3>📦 Delivery Details</h3>
+
+      <input
+        class="field"
+        id="customerName"
+        placeholder="Full Name"
+      >
+
+      <input
+        class="field"
+        id="customerPhone"
+        type="tel"
+        placeholder="Mobile Number"
+      >
+
+      <textarea
+        class="field"
+        id="customerAddress"
+        placeholder="House / Flat No., Street, Area, City"
+      ></textarea>
+
+      <button class="location" onclick="getLocation()">
+        📍 Use My Current Location
+      </button>
+
+      <input
+        class="field"
+        id="locationLink"
+        placeholder="Location link (optional)"
+      >
+
+      <button class="place-order" onclick="placeOrder()">
+        📲 Place Complete Order on WhatsApp
+      </button>
+
+    </div>
+
+  </div>
+</aside>
+
+<footer>
+  <strong>Nand Lal Fresh Market</strong><br><br>
+  Fresh Fruits & Vegetables • Quality • Convenience
+</footer>
+
+<script>
+
+/* ================= PRODUCTS ================= */
+
+const products = [
+
+/* FRUITS */
+
+{
+ id:"apple",
+ name:"Apple",
+ category:"Fruits",
+ price:120,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"bananaKg",
+ name:"Banana",
+ category:"Fruits",
+ price:50,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"bananaDozen",
+ name:"Banana",
+ category:"Fruits",
+ price:60,
+ unit:"dozen",
+ image:"https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"mango",
+ name:"Mango",
+ category:"Fruits",
+ price:100,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"orange",
+ name:"Orange",
+ category:"Fruits",
+ price:90,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1580052614034-c55d20bfee3b?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"grapes",
+ name:"Green Grapes",
+ category:"Fruits",
+ price:120,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"watermelon",
+ name:"Watermelon",
+ category:"Fruits",
+ price:35,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1563114773-84221bd62daa?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"papaya",
+ name:"Papaya",
+ category:"Fruits",
+ price:60,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1526318472351-c75fcf070305?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"pineapple",
+ name:"Pineapple",
+ category:"Fruits",
+ price:80,
+ unit:"piece",
+ image:"https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"pomegranate",
+ name:"Pomegranate",
+ category:"Fruits",
+ price:160,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1541344999736-83eca272f6fc?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"guava",
+ name:"Guava",
+ category:"Fruits",
+ price:80,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1536511132770-e5058c7e8c46?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"lemon",
+ name:"Lemon",
+ category:"Fruits",
+ price:100,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1590502593747-42a996133562?auto=format&fit=crop&w=700&q=85"
+},
+
+/* VEGETABLES */
+
+{
+ id:"potato",
+ name:"Potato",
+ category:"Vegetables",
+ price:30,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"onion",
+ name:"Onion",
+ category:"Vegetables",
+ price:35,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1508747703725-719777637510?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"tomato",
+ name:"Tomato",
+ category:"Vegetables",
+ price:40,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"carrot",
+ name:"Carrot",
+ category:"Vegetables",
+ price:50,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1445282768818-728615cc910a?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"broccoli",
+ name:"Broccoli",
+ category:"Vegetables",
+ price:100,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"cucumber",
+ name:"Cucumber",
+ category:"Vegetables",
+ price:45,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1449300079323-02e209d9d3e8?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"capsicum",
+ name:"Capsicum",
+ category:"Vegetables",
+ price:80,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"cauliflower",
+ name:"Cauliflower",
+ category:"Vegetables",
+ price:60,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1568584711075-3d021a7c3ca3?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"cabbage",
+ name:"Cabbage",
+ category:"Vegetables",
+ price:40,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1594282486552-05b4d80fbb9f?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"brinjal",
+ name:"Brinjal",
+ category:"Vegetables",
+ price:50,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1650982210778-7c5a1e4a8d4b?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"ladyfinger",
+ name:"Lady Finger",
+ category:"Vegetables",
+ price:70,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1425543103986-22abb7d7ea78?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"peas",
+ name:"Green Peas",
+ category:"Vegetables",
+ price:100,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1587735243615-c03f25aaff15?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"garlic",
+ name:"Garlic",
+ category:"Vegetables",
+ price:160,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1540148426945-6cf22a6b2383?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"ginger",
+ name:"Ginger",
+ category:"Vegetables",
+ price:120,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"greenChilli",
+ name:"Green Chilli",
+ category:"Vegetables",
+ price:80,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1526346698789-22fd84314424?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"pumpkin",
+ name:"Pumpkin",
+ category:"Vegetables",
+ price:35,
+ unit:"kg",
+ image:"https://images.unsplash.com/photo-1570586437263-ab629fccc818?auto=format&fit=crop&w=700&q=85"
+},
+
+/* LEAFY */
+
+{
+ id:"spinach",
+ name:"Spinach",
+ category:"Leafy",
+ price:40,
+ unit:"bunch",
+ image:"https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"coriander",
+ name:"Coriander",
+ category:"Leafy",
+ price:20,
+ unit:"bunch",
+ image:"https://images.unsplash.com/photo-1588879460618-9247f3d0e7b9?auto=format&fit=crop&w=700&q=85"
+},
+
+{
+ id:"mint",
+ name:"Mint",
+ category:"Leafy",
+ price:20,
+ unit:"bunch",
+ image:"https://images.unsplash.com/photo-1628557044797-f21a177c37ec?auto=format&fit=crop&w=700&q=85"
+}
+
+];
+
+
+/* ================= STATE ================= */
+
+let selectedCategory="All";
+let cart=[];
+
+let qty={};
+
+products.forEach(p=>{
+  qty[p.id]=1;
+});
+
+
+/* ================= PRODUCTS ================= */
+
+function setCategory(category,button){
+
+  selectedCategory=category;
+
+  document.querySelectorAll(".category")
+    .forEach(b=>b.classList.remove("active"));
+
+  button.classList.add("active");
+
+  renderProducts();
+}
+
+
+function renderProducts(){
+
+  const search =
+    document.getElementById("search")
+      .value.toLowerCase()
+      .trim();
+
+  const box =
+    document.getElementById("products");
+
+  box.innerHTML="";
+
+  const filtered =
+    products.filter(p=>{
+
+      const categoryMatch =
+        selectedCategory==="All" ||
+        p.category===selectedCategory;
+
+      const searchMatch =
+        p.name.toLowerCase().includes(search);
+
+      return categoryMatch && searchMatch;
+
+    });
+
+
+  document.getElementById("noResults").style.display =
+    filtered.length ? "none" : "block";
+
+
+  filtered.forEach(p=>{
+
+    const card=document.createElement("div");
+
+    card.className="product";
+
+    const measureDefault =
+      p.unit==="dozen" ? 1 :
+      p.unit==="piece" ? 1 :
+      p.unit==="bunch" ? 1 : 1;
+
+
+    card.innerHTML=`
+
+      <img
+        class="product-img"
+        src="${p.image}"
+        alt="${p.name}"
+        loading="lazy"
+        onerror="this.src='https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=700&q=80'"
+      >
+
+      <div class="product-info">
+
+        <div class="product-name">
+          ${p.name}
+        </div>
+
+        <div class="product-price">
+          ₹${p.price} / ${p.unit}
+        </div>
+
+        <div class="measure-row">
+
+          <input
+            class="measure-input"
+            id="measure-${p.id}"
+            type="number"
+            min="${p.unit==='dozen'?'0.5':'0.1'}"
+            step="${p.unit==='dozen'?'0.5':'0.01'}"
+            value="${measureDefault}"
+          >
+
+          <span class="measure-unit">
+            ${p.unit}
+          </span>
+
+        </div>
+
+        <div class="qty-row">
+
+          <div class="qty-control">
+
+            <button onclick="changeQty('${p.id}',-1)">
+              −
+            </button>
+
+            <span
+              class="qty-number"
+              id="qty-${p.id}">
+              ${qty[p.id]}
+            </span>
+
+            <button onclick="changeQty('${p.id}',1)">
+              +
+            </button>
+
+          </div>
+
+          <button
+            class="add"
+            onclick="addToCart('${p.id}')">
+
+            Add to Cart
+
+          </button>
+
+        </div>
+
+      </div>
+    `;
+
+    box.appendChild(card);
+
+  });
+
+}
+
+
+function changeQty(id,value){
+
+  qty[id]+=value;
+
+  if(qty[id]<1) qty[id]=1;
+
+  const el=document.getElementById("qty-"+id);
+
+  if(el) el.innerText=qty[id];
+
+}
+
+
+/* ================= CART ================= */
+
+function addToCart(id){
+
+  const p=products.find(x=>x.id===id);
+
+  const input=
+    document.getElementById("measure-"+id);
+
+  const measure=parseFloat(input.value);
+
+  if(!measure || measure<=0){
+
+    alert("Please enter a valid quantity/weight.");
+
+    return;
+  }
+
+
+  /*
+    Same product + same unit:
+    merge into one cart item.
+  */
+
+  const existing=
+    cart.find(x=>x.id===id);
+
+
+  if(existing){
+
+    existing.qty+=qty[id];
+
+    existing.measure+=
+      measure*qty[id];
+
+  }else{
+
+    cart.push({
+
+      id:p.id,
+      name:p.name,
+      price:p.price,
+      unit:p.unit,
+      qty:qty[id],
+      measure:measure*qty[id]
+
+    });
+
+  }
+
+
+  qty[id]=1;
+
+  const q=document.getElementById("qty-"+id);
+
+  if(q) q.innerText="1";
+
+
+  updateCart();
+
+  openCart();
+
+}
+
+
+/* ================= CART DISPLAY ================= */
+
+function updateCart(){
+
+  const box=
+    document.getElementById("cartItems");
+
+  box.innerHTML="";
+
+
+  if(cart.length===0){
+
+    box.innerHTML=
+      `<div class="empty">
+        Your cart is empty.<br>
+        Add your favourite products.
+      </div>`;
+
+  }else{
+
+    cart.forEach((item,index)=>{
+
+      const amount=
+        item.measure*item.price;
+
+
+      const div=
+        document.createElement("div");
+
+      div.className="cart-item";
+
+
+      div.innerHTML=`
+
+        <div class="cart-top">
+
+          <div class="cart-title">
+            ${item.name}
+          </div>
+
+          <button
+            class="remove"
+            onclick="removeItem(${index})">
+            ×
+          </button>
+
+        </div>
+
+        <div class="cart-details">
+
+          ${item.qty} item(s)<br>
+
+          ${
+            item.unit==="kg"
+            ? "Actual total weight: "+
+              item.measure.toFixed(2)+" kg"
+            : "Total: "+
+              item.measure+" "+item.unit
+          }
+
+          <br>
+
+          Rate: ₹${item.price}/${item.unit}
+
+        </div>
+
+        <div class="cart-edit">
+
+          <button onclick="changeCartQty(${index},-1)">
+            −
+          </button>
+
+          <strong>${item.qty}</strong>
+
+          <button onclick="changeCartQty(${index},1)">
+            +
+          </button>
+
+          <input
+            type="number"
+            min="0.1"
+            step="0.01"
+            value="${item.measure}"
+            onchange="changeCartMeasure(${index},this.value)"
+          >
+
+          <span class="cart-amount">
+            ₹${amount.toFixed(2)}
+          </span>
+
+        </div>
+
+      `;
+
+      box.appendChild(div);
+
+    });
+
+  }
+
+
+  let subtotal=0;
+  let itemCount=0;
+
+
+  cart.forEach(item=>{
+
+    subtotal+=
+      item.measure*item.price;
+
+    itemCount+=item.qty;
+
+  });
+
+
+  document.getElementById("subtotal")
+    .innerText=subtotal.toFixed(2);
+
+  document.getElementById("grandTotal")
+    .innerText=subtotal.toFixed(2);
+
+  document.getElementById("summaryItems")
+    .innerText=itemCount;
+
+  document.getElementById("cartCount")
+    .innerText=itemCount;
+
+  document.getElementById("bottomItems")
+    .innerText=itemCount;
+
+  document.getElementById("bottomTotal")
+    .innerText=subtotal.toFixed(2);
+
+  document.getElementById("bottomCart").style.display=
+    itemCount>0 ? "block" : "none";
+
+}
+
+
+function changeCartQty(index,value){
+
+  const item=cart[index];
+
+  const perItem=
+    item.measure/item.qty;
+
+  item.qty+=value;
+
+  if(item.qty<=0){
+
+    cart.splice(index,1);
+
+  }else{
+
+    item.measure=
+      perItem*item.qty;
+
+  }
+
+  updateCart();
+
+}
+
+
+function changeCartMeasure(index,value){
+
+  const n=parseFloat(value);
+
+  if(!n || n<=0){
+
+    updateCart();
+
+    return;
+  }
+
+  cart[index].measure=n;
+
+  updateCart();
+
+}
+
+
+function removeItem(index){
+
+  cart.splice(index,1);
+
+  updateCart();
+
+}
+
+
+/* ================= CART OPEN/CLOSE ================= */
+
+function openCart(){
+
+  document.getElementById("cart")
+    .classList.add("open");
+
+  document.getElementById("overlay")
+    .classList.add("show");
+
+}
+
+
+function closeCart(){
+
+  document.getElementById("cart")
+    .classList.remove("open");
+
+  document.getElementById("overlay")
+    .classList.remove("show");
+
+}
+
+
+/* ================= LOCATION ================= */
+
+function getLocation(){
+
+  if(!navigator.geolocation){
+
+    alert("Location is not supported.");
+
+    return;
+  }
+
+
+  navigator.geolocation.getCurrentPosition(
+
+    position=>{
+
+      const lat=
+        position.coords.latitude;
+
+      const lng=
+        position.coords.longitude;
+
+
+      document.getElementById("locationLink")
+        .value=
+        "https://www.google.com/maps?q="+
+        lat+","+lng;
+
+    },
+
+    ()=>{
+      alert(
+        "Location permission allow karein, ya address manually enter karein."
+      );
+    }
+
+  );
+
+}
+
+
+/* ================= WHATSAPP ORDER ================= */
+
+function placeOrder(){
+
+  if(cart.length===0){
+
+    alert("Please add products to your cart.");
+
+    return;
+  }
+
+
+  const name=
+    document.getElementById("customerName")
+      .value.trim();
+
+  const phone=
+    document.getElementById("customerPhone")
+      .value.trim();
+
+  const address=
+    document.getElementById("customerAddress")
+      .value.trim();
+
+  const location=
+    document.getElementById("locationLink")
+      .value.trim();
+
+
+  if(!name){
+
+    alert("Please enter your name.");
+
+    return;
+  }
+
+  if(!phone){
+
+    alert("Please enter your mobile number.");
+
+    return;
+  }
+
+  if(!address){
+
+    alert("Please enter your delivery address.");
+
+    return;
+  }
+
+
+  let total=0;
+
+  let message=
+    "Hello Nand Lal Fresh Market,%0A%0A"+
+    "NEW ORDER%0A"+
+    "--------------------%0A";
+
+
+  cart.forEach((item,index)=>{
+
+    const amount=
+      item.measure*item.price;
+
+    total+=amount;
+
+
+    message+=
+
+      "%0A"+
+      (index+1)+". "+
+      item.name+
+      "%0A"+
+
+      "Quantity: "+
+      item.qty+
+      "%0A";
+
+
+    if(item.unit==="kg"){
+
+      message+=
+        "Actual Weight: "+
+        item.measure.toFixed(2)+
+        " kg%0A";
+
+    }else{
+
+      message+=
+        "Quantity: "+
+        item.measure+
+        " "+
+        item.unit+
+        "%0A";
+
+    }
+
+
+    message+=
+
+      "Rate: ₹"+
+      item.price+
+      "/"+
+      item.unit+
+      "%0A"+
+
+      "Amount: ₹"+
+      amount.toFixed(2)+
+      "%0A";
+
+  });
+
+
+  message+=
+
+    "%0A--------------------%0A"+
+    "TOTAL: ₹"+
+    total.toFixed(2)+
+    "%0A%0A"+
+
+    "CUSTOMER DETAILS%0A"+
+    "Name: "+
+    name+
+    "%0A"+
+    "Phone: "+
+    phone+
+    "%0A"+
+    "Address: "+
+    address+
+    "%0A";
+
+
+  if(location){
+
+    message+=
+      "Location: "+
+      location+
+      "%0A";
+
+  }
+
+
+  message+=
+    "%0APlease confirm my order.";
+
+
+  const url=
+    "https://wa.me/916239446264?text="+
+    message;
+
+
+  window.open(url,"_blank");
+
+}
+
+
+/* START */
+
+renderProducts();
+
+updateCart();
+
+</script>
+
+</body>
+</html>
