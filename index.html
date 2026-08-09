@@ -13,7 +13,98 @@
 </head>
 
 <body>
+.<!-- Nand Lal Fresh Market - Shopping Section -->
 
+<section class="shop-section">
+  <h2>🛒 Fresh Fruits & Vegetables</h2>
+  <p class="shop-subtitle">Apne products select karein aur quantity choose karein</p>
+
+  <div class="product-card">
+    <div class="product-info">
+      <h3>🍎 Apple</h3>
+      <p>₹120 / kg</p>
+    </div>
+
+    <label>Quantity:</label>
+    <select>
+      <option>500 g</option>
+      <option>1 kg</option>
+      <option>2 kg</option>
+      <option>5 kg</option>
+    </select>
+
+    <button onclick="addToCart('Apple')">🛒 Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <div class="product-info">
+      <h3>🥔 Potato</h3>
+      <p>₹30 / kg</p>
+    </div>
+
+    <label>Quantity:</label>
+    <select>
+      <option>500 g</option>
+      <option>1 kg</option>
+      <option>2 kg</option>
+      <option>5 kg</option>
+    </select>
+
+    <button onclick="addToCart('Potato')">🛒 Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <div class="product-info">
+      <h3>🍅 Tomato</h3>
+      <p>₹40 / kg</p>
+    </div>
+
+    <label>Quantity:</label>
+    <select>
+      <option>500 g</option>
+      <option>1 kg</option>
+      <option>2 kg</option>
+      <option>5 kg</option>
+    </select>
+
+    <button onclick="addToCart('Tomato')">🛒 Add to Cart</button>
+  </div>
+
+  <div id="cartBox" class="cart-box">
+    <h3>🛍️ Your Cart</h3>
+    <p id="cartMessage">Cart is empty</p>
+    <button id="orderBtn" onclick="placeOrder()" style="display:none;">
+      📲 Place Order on WhatsApp
+    </button>
+  </div>
+</section>
+
+<script>
+let cart = [];
+
+function addToCart(product) {
+  cart.push(product);
+  document.getElementById("cartMessage").innerText =
+    cart.length + " product(s) added to cart";
+
+  document.getElementById("orderBtn").style.display = "block";
+}
+
+function placeOrder() {
+  let message = "Hello Nand Lal Fresh Market,%0A%0AI want to order:%0A";
+
+  cart.forEach((item, index) => {
+    message += (index + 1) + ". " + item + "%0A";
+  });
+
+  message += "%0APlease confirm my order.";
+
+  window.open(
+    "https://wa.me/916239446264?text=" + message,
+    "_blank"
+  );
+}
+</script>
 <!-- ================= HEADER ================= -->
 
 <header class="header">
