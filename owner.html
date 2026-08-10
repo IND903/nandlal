@@ -1,1627 +1,975 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nand Lal Owner Dashboard</title>
+<title>Nand Lal • Owner Dashboard</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f4f7f5;
-  color:#17231c;
+  font-family:Inter,Arial,sans-serif;
+  background:#f5f7fb;
+  color:#172033;
 }
+button,input,select{font:inherit}
+button{cursor:pointer;border:0}
 
-button,input,select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-  border:0;
-}
-
-.app{
-  min-height:100vh;
-}
-
-/* TOP BAR */
 .topbar{
-  height:64px;
-  background:#082b25;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 18px;
-  position:sticky;
-  top:0;
-  z-index:100;
-  box-shadow:0 3px 15px rgba(0,0,0,.15);
+  height:70px;background:#fff;border-bottom:1px solid #e8ebf2;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;position:sticky;top:0;z-index:20;
 }
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+  width:42px;height:42px;border-radius:13px;
+  display:grid;place-items:center;background:#0f9d58;color:#fff;font-size:21px;
+  box-shadow:0 7px 18px #0f9d5833;
 }
-
-.brand-icon{
-  width:38px;
-  height:38px;
-  border-radius:12px;
-  background:#19a85b;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:21px;
-}
-
-.brand h1{
-  font-size:18px;
-  line-height:18px;
-}
-
-.brand small{
-  color:#7fe5a8;
-  font-size:9px;
-  letter-spacing:1.5px;
-}
-
-.bell{
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  background:#123b33;
-  color:white;
-  position:relative;
-  font-size:20px;
-}
-
-.badge{
-  position:absolute;
-  top:-2px;
-  right:-1px;
-  background:#ff3d3d;
-  color:white;
-  font-size:10px;
-  min-width:18px;
-  height:18px;
-  border-radius:20px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-/* LAYOUT */
-.layout{
-  display:flex;
-  min-height:calc(100vh - 64px);
-}
-
-.sidebar{
-  width:235px;
-  background:#082b25;
-  color:white;
-  padding:18px 12px;
-  flex-shrink:0;
-}
-
+.brand h2{font-size:18px}
+.brand small{display:block;color:#8a94a6;font-size:11px;margin-top:2px}
 .owner{
-  background:#103d34;
-  border-radius:16px;
-  padding:14px;
-  display:flex;
-  align-items:center;
-  gap:11px;
+  display:flex;align-items:center;gap:10px;font-weight:700;
+}
+.avatar{
+  width:38px;height:38px;border-radius:50%;background:#172033;color:#fff;
+  display:grid;place-items:center;
+}
+
+.layout{display:flex;min-height:calc(100vh - 70px)}
+.sidebar{
+  width:235px;background:#111827;color:#cbd5e1;padding:22px 14px;
+}
+.nav-title{
+  font-size:10px;color:#64748b;letter-spacing:1.5px;
+  margin:8px 12px 10px;text-transform:uppercase;
+}
+.nav button{
+  width:100%;background:transparent;color:#cbd5e1;
+  text-align:left;padding:13px 14px;border-radius:11px;margin-bottom:5px;
+}
+.nav button:hover,.nav button.active{
+  background:#1f2937;color:#fff;
+}
+.nav button span{margin-right:10px}
+
+.main{flex:1;padding:25px;min-width:0}
+.page-head{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:15px;margin-bottom:23px;
+}
+.page-head h1{font-size:25px}
+.page-head p{color:#8a94a6;margin-top:5px;font-size:13px}
+
+.refresh{
+  background:#fff;border:1px solid #e4e8ef;padding:10px 14px;
+  border-radius:10px;font-weight:700;
+}
+
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+}
+.card{
+  background:#fff;border:1px solid #e8ebf2;border-radius:17px;
+  padding:19px;box-shadow:0 5px 20px #17203308;
+}
+.stat-top{display:flex;justify-content:space-between;align-items:center}
+.stat-icon{
+  width:40px;height:40px;border-radius:12px;background:#eefbf4;
+  display:grid;place-items:center;font-size:19px;
+}
+.stat-label{color:#8a94a6;font-size:12px;margin-bottom:7px}
+.stat-value{font-size:25px;font-weight:800}
+.stat-note{font-size:11px;color:#0f9d58;margin-top:6px}
+
+.content-grid{
+  display:grid;grid-template-columns:1.6fr 1fr;gap:18px;margin-top:18px;
+}
+.card-head{
+  display:flex;align-items:center;justify-content:space-between;
   margin-bottom:16px;
 }
+.card-head h3{font-size:16px}
+.card-head button{background:#f0fdf4;color:#087443;padding:8px 11px;border-radius:8px;font-size:12px;font-weight:700}
 
-.avatar{
-  width:48px;
-  height:48px;
-  border-radius:50%;
-  background:#d9f3df;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:25px;
+.order-list{display:flex;flex-direction:column;gap:10px}
+.order{
+  border:1px solid #edf0f5;border-radius:13px;padding:13px;
+  display:flex;justify-content:space-between;gap:10px;align-items:center;
 }
-
-.owner strong{
-  display:block;
-}
-
-.online{
-  color:#68e39a;
-  font-size:11px;
-  margin-top:4px;
-}
-
-.nav button{
-  width:100%;
-  padding:13px 14px;
-  border-radius:11px;
-  background:transparent;
-  color:#d8e9e2;
-  text-align:left;
-  margin-bottom:5px;
-  font-size:14px;
-}
-
-.nav button:hover,
-.nav button.active{
-  background:#15984f;
-  color:white;
-}
-
-.main{
-  flex:1;
-  padding:22px;
-  min-width:0;
-}
-
-.page{
-  display:none;
-}
-
-.page.active{
-  display:block;
-}
-
-.page-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  margin-bottom:18px;
-}
-
-.page-title h2{
-  font-size:25px;
-}
-
-.page-title p{
-  color:#6c7b72;
-  margin-top:4px;
-  font-size:13px;
-}
-
-/* BUTTONS */
-.btn{
-  border-radius:10px;
-  padding:11px 15px;
-  font-weight:bold;
-}
-
-.green{
-  background:#15984f;
-  color:white;
-}
-
-.light{
-  background:#e7f5eb;
-  color:#117340;
-}
-
-.red{
-  background:#ffe6e6;
-  color:#c92d2d;
-}
-
-.gray{
-  background:#edf0ee;
-  color:#455149;
-}
-
-/* DASHBOARD CARDS */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-}
-
-.card{
-  background:white;
-  border-radius:17px;
-  padding:18px;
-  box-shadow:0 3px 15px rgba(22,52,36,.07);
-  border:1px solid #e7eee9;
-}
-
-.card-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.card-icon{
-  width:42px;
-  height:42px;
-  border-radius:12px;
-  background:#e8f7ed;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:21px;
-}
-
-.card h3{
-  font-size:25px;
-  margin-top:13px;
-}
-
-.card p{
-  color:#708078;
-  font-size:12px;
-}
-
-.section{
-  margin-top:18px;
-}
-
-/* SHOP STATUS */
-.shop-control{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-}
-
+.order-main strong{font-size:13px}
+.order-main p{font-size:11px;color:#8a94a6;margin-top:4px}
+.order-right{text-align:right}
+.amount{font-weight:800;font-size:14px}
 .status{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-weight:bold;
+  display:inline-block;padding:5px 8px;border-radius:20px;
+  font-size:10px;font-weight:800;margin-top:5px;
+}
+.pending{background:#fff7df;color:#a66a00}
+.confirmed{background:#eaf4ff;color:#1769aa}
+.delivered{background:#eafaf1;color:#087443}
+.cancelled{background:#fff0f0;color:#b42318}
+
+.quick{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+}
+.quick button{
+  background:#f8fafc;border:1px solid #e8ebf2;padding:14px;
+  border-radius:12px;text-align:left;font-weight:700;color:#334155;
+}
+.quick button:hover{background:#eefbf4}
+
+.section{display:none}
+.section.active{display:block}
+
+.toolbar{
+  display:flex;gap:10px;margin-bottom:15px;flex-wrap:wrap;
+}
+.toolbar input,.toolbar select{
+  background:#fff;border:1px solid #e0e5ed;border-radius:10px;
+  padding:11px 12px;outline:none;
+}
+.toolbar input{flex:1;min-width:180px}
+
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse;min-width:700px}
+th,td{padding:13px 12px;border-bottom:1px solid #edf0f5;text-align:left;font-size:12px}
+th{color:#8a94a6;font-size:11px}
+td strong{font-size:12px}
+.action{
+  padding:7px 9px;border-radius:7px;background:#eefbf4;color:#087443;
+  font-size:11px;font-weight:700;
 }
 
-.dot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:#18a653;
-}
-
-.dot.closed{
-  background:#e03b3b;
-}
-
-.switch{
-  width:52px;
-  height:29px;
-  border-radius:30px;
-  background:#cdd6d1;
-  position:relative;
-  transition:.2s;
-}
-
-.switch.on{
-  background:#15984f;
-}
-
-.switch span{
-  position:absolute;
-  width:23px;
-  height:23px;
-  background:white;
-  border-radius:50%;
-  top:3px;
-  left:3px;
-  transition:.2s;
-}
-
-.switch.on span{
-  left:26px;
-}
-
-/* TABLE / ORDERS */
-.table-card{
-  background:white;
-  border-radius:17px;
-  padding:17px;
-  box-shadow:0 3px 15px rgba(22,52,36,.07);
-  overflow:auto;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:650px;
-}
-
-th,td{
-  padding:13px 10px;
-  text-align:left;
-  border-bottom:1px solid #edf1ee;
-  font-size:13px;
-}
-
-th{
-  color:#69766f;
-  font-size:11px;
-  text-transform:uppercase;
-}
-
-.status-pill{
-  padding:5px 9px;
-  border-radius:20px;
-  font-size:10px;
-  font-weight:bold;
-  display:inline-block;
-}
-
-.new{
-  background:#fff0c9;
-  color:#9b6c00;
-}
-
-.confirmed{
-  background:#e1f1ff;
-  color:#0870b5;
-}
-
-.delivery{
-  background:#eee3ff;
-  color:#7333b8;
-}
-
-.delivered{
-  background:#dff7e7;
-  color:#168247;
-}
-
-.cancelled{
-  background:#ffe0e0;
-  color:#c52c2c;
-}
-
-/* PRODUCTS */
-.product-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-}
-
-.product{
-  background:white;
-  border-radius:17px;
-  overflow:hidden;
-  border:1px solid #e5ece7;
-  box-shadow:0 3px 15px rgba(22,52,36,.06);
-}
-
-.product-photo{
-  height:150px;
-  background:#eef5ef;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:70px;
-}
-
-.product-body{
-  padding:15px;
-}
-
-.product-name{
-  font-weight:bold;
-  font-size:16px;
-}
-
-.product-meta{
-  color:#718078;
-  font-size:12px;
-  margin:5px 0 12px;
-}
-
-.price{
-  font-size:18px;
-  font-weight:bold;
-  color:#08743b;
-}
-
-.product-actions{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:7px;
-  margin-top:12px;
-}
-
-/* FORMS */
-.form-card{
-  background:white;
-  border-radius:17px;
-  padding:20px;
-  max-width:650px;
-  box-shadow:0 3px 15px rgba(22,52,36,.07);
-}
-
-.form-group{
-  margin-bottom:14px;
-}
-
-.form-group label{
-  display:block;
-  font-size:12px;
-  color:#59675f;
-  margin-bottom:6px;
-  font-weight:bold;
-}
-
-.form-group input,
-.form-group select{
-  width:100%;
-  padding:12px;
-  border:1px solid #dce5df;
-  border-radius:10px;
-  outline:none;
-  background:#fff;
-}
-
-.form-group input:focus,
-.form-group select:focus{
-  border-color:#15984f;
-}
-
-/* OFFER */
-.offer{
-  background:white;
-  padding:17px;
-  border-radius:15px;
-  margin-bottom:10px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border:1px solid #e7eee9;
-}
-
-.offer strong{
-  display:block;
-  margin-bottom:5px;
-}
-
-.offer small{
-  color:#758078;
-}
-
-/* MODAL */
 .modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.48);
-  z-index:500;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
+  display:none;position:fixed;inset:0;background:#11182799;
+  z-index:100;align-items:center;justify-content:center;padding:18px;
 }
-
-.modal.show{
-  display:flex;
-}
-
+.modal.show{display:flex}
 .modal-box{
-  background:white;
-  width:100%;
-  max-width:500px;
-  border-radius:20px;
-  padding:20px;
-  max-height:90vh;
-  overflow:auto;
+  background:#fff;width:min(520px,100%);border-radius:18px;padding:22px;
+  max-height:90vh;overflow:auto;
+}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.close{background:#f1f5f9;border-radius:8px;padding:7px 10px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group.full{grid-column:1/-1}
+.form-group label{font-size:11px;color:#64748b;font-weight:700}
+.form-group input,.form-group select{
+  padding:11px;border:1px solid #dfe4ec;border-radius:9px;outline:none;
+}
+.save{
+  width:100%;margin-top:17px;background:#0f9d58;color:#fff;
+  padding:13px;border-radius:10px;font-weight:800;
 }
 
-.modal-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:17px;
-}
-
-.close{
-  background:#edf1ee;
-  width:35px;
-  height:35px;
-  border-radius:50%;
-}
-
-/* MOBILE */
-.bottom-nav{
-  display:none;
-}
+.empty{text-align:center;padding:35px;color:#8a94a6;font-size:13px}
 
 @media(max-width:900px){
-  .cards{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .product-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .sidebar{
-    width:205px;
-  }
+  .sidebar{width:75px;padding:18px 8px}
+  .nav button{font-size:0;text-align:center}
+  .nav button span{font-size:18px;margin:0}
+  .nav-title,.brand h2,.brand small{display:none}
+  .stats{grid-template-columns:1fr 1fr}
+  .content-grid{grid-template-columns:1fr}
 }
-
-@media(max-width:650px){
-  .topbar{
-    height:58px;
-  }
-
-  .layout{
-    min-height:calc(100vh - 58px);
-  }
-
-  .sidebar{
-    display:none;
-  }
-
-  .main{
-    padding:15px 12px 80px;
-  }
-
-  .page-title{
-    align-items:flex-start;
-  }
-
-  .page-title h2{
-    font-size:21px;
-  }
-
-  .cards{
-    grid-template-columns:repeat(2,1fr);
-    gap:9px;
-  }
-
-  .card{
-    padding:13px;
-  }
-
-  .card h3{
-    font-size:21px;
-  }
-
-  .product-grid{
-    grid-template-columns:1fr 1fr;
-    gap:9px;
-  }
-
-  .product-photo{
-    height:110px;
-    font-size:50px;
-  }
-
-  .product-body{
-    padding:11px;
-  }
-
-  .product-name{
-    font-size:14px;
-  }
-
-  .price{
-    font-size:16px;
-  }
-
-  .bottom-nav{
-    position:fixed;
-    bottom:0;
-    left:0;
-    right:0;
-    height:65px;
-    background:white;
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    z-index:300;
-    box-shadow:0 -3px 18px rgba(0,0,0,.1);
-  }
-
-  .bottom-nav button{
-    background:white;
-    color:#66736b;
-    font-size:10px;
-  }
-
-  .bottom-nav button span{
-    display:block;
-    font-size:20px;
-    margin-bottom:3px;
-  }
-
-  .bottom-nav button.active{
-    color:#15984f;
-    font-weight:bold;
-  }
+@media(max-width:600px){
+  .topbar{padding:0 14px}
+  .main{padding:16px}
+  .stats{gap:10px}
+  .card{padding:15px}
+  .stat-value{font-size:21px}
+  .owner div{display:none}
+  .form-grid{grid-template-columns:1fr}
+  .form-group.full{grid-column:auto}
 }
 </style>
 </head>
 
 <body>
 
-<div class="app">
-
 <header class="topbar">
   <div class="brand">
-    <div class="brand-icon">🌿</div>
+    <div class="logo">🥬</div>
     <div>
-      <h1>NAND LAL</h1>
-      <small>FRESH MARKET</small>
+      <h2>Nand Lal</h2>
+      <small>Fresh Market • Owner Panel</small>
     </div>
   </div>
 
-  <button class="bell" onclick="showPage('notifications')">
-    🔔
-    <span class="badge" id="notificationCount">3</span>
-  </button>
+  <div class="owner">
+    <div>
+      <div>Owner</div>
+    </div>
+    <div class="avatar">NL</div>
+  </div>
 </header>
 
 <div class="layout">
 
 <aside class="sidebar">
+  <div class="nav-title">Management</div>
 
-  <div class="owner">
-    <div class="avatar">👨‍💼</div>
-    <div>
-      <strong>Nand Lal</strong>
-      <div class="online">● Owner Online</div>
-    </div>
+  <div class="nav">
+    <button class="active" onclick="showSection('dashboard',this)">
+      <span>📊</span> Dashboard
+    </button>
+
+    <button onclick="showSection('orders',this)">
+      <span>🛒</span> Orders
+    </button>
+
+    <button onclick="showSection('products',this)">
+      <span>🥦</span> Products
+    </button>
+
+    <button onclick="showSection('customers',this)">
+      <span>👥</span> Customers
+    </button>
   </div>
 
-  <nav class="nav">
-    <button class="active" onclick="showPage('dashboard',this)">🏠 Dashboard</button>
-    <button onclick="showPage('orders',this)">🛒 Orders</button>
-    <button onclick="showPage('products',this)">🥬 Products</button>
-    <button onclick="showPage('delivery',this)">🚚 Delivery</button>
-    <button onclick="showPage('offers',this)">🎁 Offers</button>
-    <button onclick="showPage('reports',this)">📊 Reports</button>
-    <button onclick="showPage('notifications',this)">🔔 Notifications</button>
-    <button onclick="showPage('settings',this)">⚙️ Settings</button>
-  </nav>
+  <div class="nav-title" style="margin-top:25px">Store</div>
 
+  <div class="nav">
+    <button onclick="openProductModal()">
+      <span>➕</span> Add Product
+    </button>
+
+    <button onclick="loadDashboard()">
+      <span>🔄</span> Refresh
+    </button>
+  </div>
 </aside>
 
 <main class="main">
 
 <!-- DASHBOARD -->
-<section class="page active" id="dashboard">
+<section id="dashboard" class="section active">
 
-  <div class="page-title">
+  <div class="page-head">
     <div>
-      <h2>Dashboard</h2>
-      <p>Good morning, Owner 👋</p>
+      <h1>Good morning, Owner 👋</h1>
+      <p>Here is your Nand Lal Fresh Market overview.</p>
     </div>
-    <button class="btn green" onclick="showPage('products')">+ Add Product</button>
+    <button class="refresh" onclick="loadDashboard()">↻ Refresh</button>
   </div>
 
-  <div class="cards">
-
+  <div class="stats">
     <div class="card">
-      <div class="card-top">
-        <p>New Orders</p>
-        <div class="card-icon">🛒</div>
-      </div>
-      <h3 id="newOrderCount">12</h3>
-      <p>Need confirmation</p>
-    </div>
-
-    <div class="card">
-      <div class="card-top">
-        <p>Today's Sales</p>
-        <div class="card-icon">💰</div>
-      </div>
-      <h3>₹8,620</h3>
-      <p>Today's total</p>
-    </div>
-
-    <div class="card">
-      <div class="card-top">
-        <p>Pending Orders</p>
-        <div class="card-icon">⏳</div>
-      </div>
-      <h3>18</h3>
-      <p>Processing</p>
-    </div>
-
-    <div class="card">
-      <div class="card-top">
-        <p>Low Stock</p>
-        <div class="card-icon">📦</div>
-      </div>
-      <h3 id="lowStockCount">2</h3>
-      <p>Need attention</p>
-    </div>
-
-  </div>
-
-  <div class="section card">
-    <div class="shop-control">
-      <div>
-        <div class="status">
-          <span class="dot" id="shopDot"></span>
-          <span id="shopText">Shop Open</span>
+      <div class="stat-top">
+        <div>
+          <div class="stat-label">Total Orders</div>
+          <div class="stat-value" id="totalOrders">0</div>
+          <div class="stat-note">All orders</div>
         </div>
-        <p style="margin-top:6px;color:#718078;font-size:12px;">
-          Customers can place orders
-        </p>
+        <div class="stat-icon">🛒</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="stat-top">
+        <div>
+          <div class="stat-label">Pending Orders</div>
+          <div class="stat-value" id="pendingOrders">0</div>
+          <div class="stat-note">Needs attention</div>
+        </div>
+        <div class="stat-icon">⏳</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="stat-top">
+        <div>
+          <div class="stat-label">Products</div>
+          <div class="stat-value" id="totalProducts">0</div>
+          <div class="stat-note">Active products</div>
+        </div>
+        <div class="stat-icon">🥬</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="stat-top">
+        <div>
+          <div class="stat-label">Sales</div>
+          <div class="stat-value" id="totalSales">₹0</div>
+          <div class="stat-note">Delivered orders</div>
+        </div>
+        <div class="stat-icon">💰</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-grid">
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Recent Orders</h3>
+        <button onclick="showSection('orders')">View all</button>
+      </div>
+      <div id="recentOrders" class="order-list"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Quick Actions</h3>
       </div>
 
-      <button class="switch on" id="shopSwitch" onclick="toggleShop()">
-        <span></span>
-      </button>
-    </div>
-  </div>
-
-  <div class="section table-card">
-    <div class="page-title">
-      <h3>Recent Orders</h3>
-      <button class="btn light" onclick="showPage('orders')">View All</button>
+      <div class="quick">
+        <button onclick="showSection('orders')">🛒<br>Manage Orders</button>
+        <button onclick="openProductModal()">🥦<br>Add Product</button>
+        <button onclick="showSection('products')">💰<br>Manage Prices</button>
+        <button onclick="showSection('customers')">👥<br>Customers</button>
+      </div>
     </div>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Order</th>
-          <th>Customer</th>
-          <th>Total</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>#NL1025</td>
-          <td>Rahul Sharma</td>
-          <td>₹540</td>
-          <td><span class="status-pill new">NEW</span></td>
-        </tr>
-
-        <tr>
-          <td>#NL1024</td>
-          <td>Neha Verma</td>
-          <td>₹1,230</td>
-          <td><span class="status-pill confirmed">CONFIRMED</span></td>
-        </tr>
-
-        <tr>
-          <td>#NL1023</td>
-          <td>Amit Kumar</td>
-          <td>₹320</td>
-          <td><span class="status-pill delivery">DELIVERY</span></td>
-        </tr>
-      </tbody>
-    </table>
   </div>
-
 </section>
 
 
 <!-- ORDERS -->
-<section class="page" id="orders">
+<section id="orders" class="section">
 
-  <div class="page-title">
+  <div class="page-head">
     <div>
-      <h2>Orders</h2>
-      <p>Manage customer orders</p>
+      <h1>Orders</h1>
+      <p>Manage customer orders from one place.</p>
     </div>
   </div>
 
-  <div class="table-card">
+  <div class="toolbar">
+    <input id="orderSearch" type="search" placeholder="Search customer, phone or order..." oninput="renderOrders()">
 
-    <table id="orderTable">
-      <thead>
-        <tr>
-          <th>Order</th>
-          <th>Customer</th>
-          <th>Items</th>
-          <th>Total</th>
-          <th>Status</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-
-      <tbody>
-
-        <tr>
-          <td>#NL1025</td>
-          <td>Rahul Sharma<br><small>+91 98765 43210</small></td>
-          <td>3 Items</td>
-          <td>₹540</td>
-          <td><span class="status-pill new">NEW</span></td>
-          <td>
-            <button class="btn green" onclick="confirmOrder(this)">Confirm</button>
-          </td>
-        </tr>
-
-        <tr>
-          <td>#NL1024</td>
-          <td>Neha Verma<br><small>+91 87654 32109</small></td>
-          <td>5 Items</td>
-          <td>₹1,230</td>
-          <td><span class="status-pill confirmed">CONFIRMED</span></td>
-          <td>
-            <button class="btn light">View</button>
-          </td>
-        </tr>
-
-        <tr>
-          <td>#NL1023</td>
-          <td>Amit Kumar<br><small>+91 76543 21098</small></td>
-          <td>2 Items</td>
-          <td>₹320</td>
-          <td><span class="status-pill delivery">OUT FOR DELIVERY</span></td>
-          <td>
-            <button class="btn light">View</button>
-          </td>
-        </tr>
-
-      </tbody>
-    </table>
-
+    <select id="orderFilter" onchange="renderOrders()">
+      <option value="all">All Status</option>
+      <option value="Pending">Pending</option>
+      <option value="Confirmed">Confirmed</option>
+      <option value="Delivered">Delivered</option>
+      <option value="Cancelled">Cancelled</option>
+    </select>
   </div>
 
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ORDER</th>
+            <th>CUSTOMER</th>
+            <th>PHONE</th>
+            <th>TOTAL</th>
+            <th>STATUS</th>
+            <th>ACTION</th>
+          </tr>
+        </thead>
+        <tbody id="ordersTable"></tbody>
+      </table>
+    </div>
+  </div>
 </section>
 
 
 <!-- PRODUCTS -->
-<section class="page" id="products">
+<section id="products" class="section">
 
-  <div class="page-title">
+  <div class="page-head">
     <div>
-      <h2>Products</h2>
-      <p>Add, edit, price and stock control</p>
+      <h1>Products</h1>
+      <p>Manage your fruits, vegetables and prices.</p>
     </div>
 
-    <button class="btn green" onclick="openProductModal()">+ Add Product</button>
+    <button class="refresh" onclick="openProductModal()">＋ Add Product</button>
   </div>
 
-  <div class="product-grid" id="productGrid">
-
-    <div class="product" data-name="Apple">
-      <div class="product-photo">🍎</div>
-      <div class="product-body">
-        <div class="product-name">Apple</div>
-        <div class="product-meta">Fruits • kg</div>
-        <div class="price">₹<span class="product-price">160</span> / kg</div>
-
-        <div style="margin-top:8px;">
-          <span class="status-pill delivered">IN STOCK</span>
-        </div>
-
-        <div class="product-actions">
-          <button class="btn light" onclick="editPrice(this)">✏️ Price</button>
-          <button class="btn light" onclick="editStock(this)">📦 Stock</button>
-          <button class="btn red" onclick="deleteProduct(this)">🗑️ Delete</button>
-          <button class="btn gray" onclick="toggleProduct(this)">ON</button>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="product" data-name="Banana">
-      <div class="product-photo">🍌</div>
-      <div class="product-body">
-        <div class="product-name">Banana</div>
-        <div class="product-meta">Fruits • dozen</div>
-        <div class="price">₹<span class="product-price">60</span> / dozen</div>
-
-        <div style="margin-top:8px;">
-          <span class="status-pill delivered">IN STOCK</span>
-        </div>
-
-        <div class="product-actions">
-          <button class="btn light" onclick="editPrice(this)">✏️ Price</button>
-          <button class="btn light" onclick="editStock(this)">📦 Stock</button>
-          <button class="btn red" onclick="deleteProduct(this)">🗑️ Delete</button>
-          <button class="btn gray" onclick="toggleProduct(this)">ON</button>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="product" data-name="Potato">
-      <div class="product-photo">🥔</div>
-      <div class="product-body">
-        <div class="product-name">Potato</div>
-        <div class="product-meta">Vegetables • kg</div>
-        <div class="price">₹<span class="product-price">30</span> / kg</div>
-
-        <div style="margin-top:8px;">
-          <span class="status-pill delivered">IN STOCK</span>
-        </div>
-
-        <div class="product-actions">
-          <button class="btn light" onclick="editPrice(this)">✏️ Price</button>
-          <button class="btn light" onclick="editStock(this)">📦 Stock</button>
-          <button class="btn red" onclick="deleteProduct(this)">🗑️ Delete</button>
-          <button class="btn gray" onclick="toggleProduct(this)">ON</button>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="product" data-name="Tomato">
-      <div class="product-photo">🍅</div>
-      <div class="product-body">
-        <div class="product-name">Tomato</div>
-        <div class="product-meta">Vegetables • kg</div>
-        <div class="price">₹<span class="product-price">40</span> / kg</div>
-
-        <div style="margin-top:8px;">
-          <span class="status-pill delivered">IN STOCK</span>
-        </div>
-
-        <div class="product-actions">
-          <button class="btn light" onclick="editPrice(this)">✏️ Price</button>
-          <button class="btn light" onclick="editStock(this)">📦 Stock</button>
-          <button class="btn red" onclick="deleteProduct(this)">🗑️ Delete</button>
-          <button class="btn gray" onclick="toggleProduct(this)">ON</button>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="product" data-name="Mango">
-      <div class="product-photo">🥭</div>
-      <div class="product-body">
-        <div class="product-name">Mango</div>
-        <div class="product-meta">Fruits • kg</div>
-        <div class="price">₹<span class="product-price">120</span> / kg</div>
-
-        <div style="margin-top:8px;">
-          <span class="status-pill" style="background:#fff0d4;color:#a36b00;">LIMITED</span>
-        </div>
-
-        <div class="product-actions">
-          <button class="btn light" onclick="editPrice(this)">✏️ Price</button>
-          <button class="btn light" onclick="editStock(this)">📦 Stock</button>
-          <button class="btn red" onclick="deleteProduct(this)">🗑️ Delete</button>
-          <button class="btn gray" onclick="toggleProduct(this)">ON</button>
-        </div>
-      </div>
-    </div>
-
+  <div class="toolbar">
+    <input id="productSearch" type="search" placeholder="Search product..." oninput="renderProducts()">
   </div>
 
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>PRODUCT</th>
+            <th>CATEGORY</th>
+            <th>UNIT</th>
+            <th>PRICE</th>
+            <th>ACTION</th>
+          </tr>
+        </thead>
+        <tbody id="productsTable"></tbody>
+      </table>
+    </div>
+  </div>
 </section>
 
 
-<!-- DELIVERY -->
-<section class="page" id="delivery">
+<!-- CUSTOMERS -->
+<section id="customers" class="section">
 
-  <div class="page-title">
+  <div class="page-head">
     <div>
-      <h2>Delivery</h2>
-      <p>Simple delivery controls</p>
+      <h1>Customers</h1>
+      <p>Customer information from your orders.</p>
     </div>
   </div>
 
-  <div class="form-card">
-
-    <div class="form-group">
-      <label>Delivery Status</label>
-      <button class="btn green" style="width:100%;" onclick="toggleDelivery(this)">
-        🟢 Delivery Available
-      </button>
-    </div>
-
-    <div class="form-group">
-      <label>Delivery Charge (₹)</label>
-      <input type="number" value="20">
-    </div>
-
-    <div class="form-group">
-      <label>Minimum Order (₹)</label>
-      <input type="number" value="100">
-    </div>
-
-    <div class="form-group">
-      <label>Delivery Radius (KM)</label>
-      <input type="number" value="7">
-    </div>
-
-    <button class="btn green" style="width:100%;" onclick="saveMessage()">
-      Save Delivery Settings
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- OFFERS -->
-<section class="page" id="offers">
-
-  <div class="page-title">
-    <div>
-      <h2>Offers</h2>
-      <p>Control your customer offers</p>
-    </div>
-
-    <button class="btn green" onclick="addOffer()">+ Add Offer</button>
-  </div>
-
-  <div id="offerList">
-
-    <div class="offer">
-      <div>
-        <strong>🎁 Flat 10% OFF</strong>
-        <small>On orders above ₹500</small>
-      </div>
-      <button class="switch on" onclick="this.classList.toggle('on')">
-        <span></span>
-      </button>
-    </div>
-
-    <div class="offer">
-      <div>
-        <strong>🚚 Free Delivery</strong>
-        <small>On orders above ₹300</small>
-      </div>
-      <button class="switch on" onclick="this.classList.toggle('on')">
-        <span></span>
-      </button>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- REPORTS -->
-<section class="page" id="reports">
-
-  <div class="page-title">
-    <div>
-      <h2>Reports</h2>
-      <p>Shop performance</p>
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>NAME</th>
+            <th>PHONE</th>
+            <th>ADDRESS</th>
+            <th>ORDERS</th>
+          </tr>
+        </thead>
+        <tbody id="customersTable"></tbody>
+      </table>
     </div>
   </div>
-
-  <div class="cards">
-
-    <div class="card">
-      <p>Total Sales</p>
-      <h3>₹1,24,850</h3>
-      <p>This month</p>
-    </div>
-
-    <div class="card">
-      <p>Total Orders</p>
-      <h3>320</h3>
-      <p>This month</p>
-    </div>
-
-    <div class="card">
-      <p>Average Order</p>
-      <h3>₹390</h3>
-      <p>Per order</p>
-    </div>
-
-    <div class="card">
-      <p>Delivered</p>
-      <h3>286</h3>
-      <p>Completed</p>
-    </div>
-
-  </div>
-
-  <div class="section card">
-    <h3>📊 Sales Overview</h3>
-
-    <div style="
-      height:190px;
-      margin-top:18px;
-      display:flex;
-      align-items:end;
-      gap:10px;
-      padding:10px;
-      border-bottom:1px solid #ddd;
-    ">
-
-      <div style="height:30%;flex:1;background:#bdebcf;border-radius:7px 7px 0 0;"></div>
-      <div style="height:45%;flex:1;background:#91dbac;border-radius:7px 7px 0 0;"></div>
-      <div style="height:38%;flex:1;background:#72cd95;border-radius:7px 7px 0 0;"></div>
-      <div style="height:65%;flex:1;background:#4dbc79;border-radius:7px 7px 0 0;"></div>
-      <div style="height:55%;flex:1;background:#35ad65;border-radius:7px 7px 0 0;"></div>
-      <div style="height:82%;flex:1;background:#15984f;border-radius:7px 7px 0 0;"></div>
-      <div style="height:70%;flex:1;background:#0d7d40;border-radius:7px 7px 0 0;"></div>
-
-    </div>
-  </div>
-
-</section>
-
-
-<!-- NOTIFICATIONS -->
-<section class="page" id="notifications">
-
-  <div class="page-title">
-    <div>
-      <h2>Notifications</h2>
-      <p>Important alerts</p>
-    </div>
-  </div>
-
-  <div class="offer">
-    <div>
-      <strong>🛒 New Order #NL1025</strong>
-      <small>Rahul Sharma placed a new order • ₹540</small>
-    </div>
-    <span class="status-pill new">NEW</span>
-  </div>
-
-  <div class="offer">
-    <div>
-      <strong>📦 Low Stock</strong>
-      <small>Mango stock is running low</small>
-    </div>
-    <span class="status-pill" style="background:#fff0d4;color:#a36b00;">LOW</span>
-  </div>
-
-  <div class="offer">
-    <div>
-      <strong>🚚 Order #NL1023</strong>
-      <small>Amit Kumar's order is out for delivery</small>
-    </div>
-    <span class="status-pill delivery">DELIVERY</span>
-  </div>
-
-</section>
-
-
-<!-- SETTINGS -->
-<section class="page" id="settings">
-
-  <div class="page-title">
-    <div>
-      <h2>Settings</h2>
-      <p>Shop controls</p>
-    </div>
-  </div>
-
-  <div class="form-card">
-
-    <div class="form-group">
-      <label>Shop Name</label>
-      <input value="Nand Lal Fresh Market">
-    </div>
-
-    <div class="form-group">
-      <label>Owner Phone</label>
-      <input value="+91 6239446264">
-    </div>
-
-    <div class="form-group">
-      <label>Shop Address</label>
-      <input value="Mohali, Punjab">
-    </div>
-
-    <div class="form-group">
-      <label>WhatsApp Number</label>
-      <input value="+91 6239446264">
-    </div>
-
-    <button class="btn green" style="width:100%;" onclick="saveMessage()">
-      Save Settings
-    </button>
-
-  </div>
-
 </section>
 
 </main>
 </div>
 
 
-<!-- MOBILE NAV -->
-<nav class="bottom-nav">
-  <button class="active" onclick="showPage('dashboard',this)">
-    <span>🏠</span>Home
-  </button>
-
-  <button onclick="showPage('orders',this)">
-    <span>🛒</span>Orders
-  </button>
-
-  <button onclick="showPage('products',this)">
-    <span>🥬</span>Products
-  </button>
-
-  <button onclick="showPage('reports',this)">
-    <span>📊</span>Reports
-  </button>
-
-  <button onclick="showPage('settings',this)">
-    <span>⚙️</span>More
-  </button>
-</nav>
-
-
 <!-- PRODUCT MODAL -->
 <div class="modal" id="productModal">
-
   <div class="modal-box">
 
     <div class="modal-head">
-      <h2>Add Product</h2>
+      <h3 id="productModalTitle">Add Product</h3>
       <button class="close" onclick="closeProductModal()">✕</button>
     </div>
 
-    <div class="form-group">
-      <label>Product Name</label>
-      <input id="newProductName" placeholder="e.g. Orange">
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>PRODUCT NAME</label>
+        <input id="productName" placeholder="e.g. Mango">
+      </div>
+
+      <div class="form-group">
+        <label>CATEGORY</label>
+        <select id="productCategory">
+          <option>Fruits</option>
+          <option>Vegetables</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>UNIT</label>
+        <select id="productUnit">
+          <option>kg</option>
+          <option>500g</option>
+          <option>piece</option>
+          <option>dozen</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>PRICE ₹</label>
+        <input id="productPrice" type="number" placeholder="100">
+      </div>
+
+      <div class="form-group full">
+        <label>IMAGE URL (OPTIONAL)</label>
+        <input id="productImage" placeholder="https://...">
+      </div>
+
     </div>
 
-    <div class="form-group">
-      <label>Category</label>
-      <select id="newProductCategory">
-        <option>Fruits</option>
-        <option>Vegetables</option>
-        <option>Daily Fresh</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label>Price (₹)</label>
-      <input id="newProductPrice" type="number" placeholder="e.g. 100">
-    </div>
-
-    <div class="form-group">
-      <label>Unit</label>
-      <select id="newProductUnit">
-        <option>kg</option>
-        <option>piece</option>
-        <option>dozen</option>
-        <option>500g</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label>Product Icon</label>
-      <input id="newProductIcon" placeholder="🍊">
-    </div>
-
-    <button class="btn green" style="width:100%;" onclick="addProduct()">
-      Save Product
-    </button>
-
+    <button class="save" onclick="saveProduct()">Save Product</button>
   </div>
 </div>
 
 
 <script>
+/*
+  NAND LAL OWNER DASHBOARD
+  --------------------------------
+  Firebase config can be connected here.
+  The dashboard also has local demo storage
+  so the interface can be tested immediately.
+*/
 
-function showPage(id,btn){
+let orders = JSON.parse(localStorage.getItem("nandlal_orders") || "[]");
 
-  document.querySelectorAll(".page").forEach(function(page){
-    page.classList.remove("active");
+let products = JSON.parse(localStorage.getItem("nandlal_products") || "[]");
+
+let editProductId = null;
+
+
+/* DEMO PRODUCTS - only created if empty */
+if(products.length === 0){
+  products = [
+    {id:"p1",name:"Potato",category:"Vegetables",unit:"kg",price:30},
+    {id:"p2",name:"Onion",category:"Vegetables",unit:"kg",price:35},
+    {id:"p3",name:"Tomato",category:"Vegetables",unit:"kg",price:40},
+    {id:"p4",name:"Mango",category:"Fruits",unit:"kg",price:100},
+    {id:"p5",name:"Apple",category:"Fruits",unit:"kg",price:140}
+  ];
+  saveProducts();
+}
+
+
+/* Navigation */
+function showSection(id,btn){
+
+  document.querySelectorAll(".section").forEach(s=>{
+    s.classList.remove("active");
   });
 
-  var target=document.getElementById(id);
+  document.getElementById(id).classList.add("active");
 
-  if(target){
-    target.classList.add("active");
-  }
-
-  document.querySelectorAll(".nav button,.bottom-nav button").forEach(function(b){
+  document.querySelectorAll(".nav button").forEach(b=>{
     b.classList.remove("active");
   });
 
-  if(btn){
-    btn.classList.add("active");
-  }
+  if(btn) btn.classList.add("active");
 
-  window.scrollTo(0,0);
+  if(id==="dashboard") loadDashboard();
+  if(id==="orders") renderOrders();
+  if(id==="products") renderProducts();
+  if(id==="customers") renderCustomers();
 }
 
 
-/* SHOP OPEN / CLOSE */
+/* Dashboard */
+function loadDashboard(){
 
-function toggleShop(){
+  document.getElementById("totalOrders").textContent = orders.length;
 
-  var sw=document.getElementById("shopSwitch");
-  var text=document.getElementById("shopText");
-  var dot=document.getElementById("shopDot");
+  document.getElementById("pendingOrders").textContent =
+    orders.filter(o=>o.status==="Pending").length;
 
-  sw.classList.toggle("on");
+  document.getElementById("totalProducts").textContent =
+    products.length;
 
-  if(sw.classList.contains("on")){
-    text.innerText="Shop Open";
-    dot.classList.remove("closed");
-  }else{
-    text.innerText="Shop Closed";
-    dot.classList.add("closed");
-  }
+  let sales = orders
+    .filter(o=>o.status==="Delivered")
+    .reduce((sum,o)=>sum + Number(o.total || 0),0);
+
+  document.getElementById("totalSales").textContent =
+    "₹" + sales.toLocaleString("en-IN");
+
+  renderRecentOrders();
 }
 
 
-/* ORDER CONFIRM */
+/* Recent orders */
+function renderRecentOrders(){
 
-function confirmOrder(button){
+  const box = document.getElementById("recentOrders");
 
-  var row=button.closest("tr");
-  var status=row.querySelector(".status-pill");
+  const recent = [...orders].reverse().slice(0,6);
 
-  status.className="status-pill confirmed";
-  status.innerText="CONFIRMED";
+  if(!recent.length){
+    box.innerHTML = `<div class="empty">No orders yet.</div>`;
+    return;
+  }
 
-  button.innerText="Packing";
-  button.className="btn light";
+  box.innerHTML = recent.map(o=>`
 
-  alert("Order confirmed successfully!");
+    <div class="order">
+
+      <div class="order-main">
+        <strong>#${escapeHTML(o.id)}</strong>
+        <p>${escapeHTML(o.customer || "Customer")}</p>
+      </div>
+
+      <div class="order-right">
+        <div class="amount">₹${Number(o.total||0).toLocaleString("en-IN")}</div>
+        <span class="status ${statusClass(o.status)}">
+          ${escapeHTML(o.status || "Pending")}
+        </span>
+      </div>
+
+    </div>
+
+  `).join("");
 }
 
 
-/* PRICE */
+/* Orders */
+function renderOrders(){
 
-function editPrice(button){
+  const tbody = document.getElementById("ordersTable");
 
-  var product=button.closest(".product");
-  var priceElement=product.querySelector(".product-price");
+  const search =
+    (document.getElementById("orderSearch")?.value || "").toLowerCase();
 
-  var oldPrice=priceElement.innerText;
+  const filter =
+    document.getElementById("orderFilter")?.value || "all";
 
-  var newPrice=prompt(
-    "New price for "+product.dataset.name+" (₹):",
-    oldPrice
-  );
+  const filtered = orders.filter(o=>{
 
-  if(newPrice!==null && newPrice.trim()!==""){
+    const text = `
+      ${o.id}
+      ${o.customer}
+      ${o.phone}
+    `.toLowerCase();
 
-    priceElement.innerText=newPrice;
+    const matchSearch = text.includes(search);
 
-    alert(
-      product.dataset.name+
-      " price updated to ₹"+
-      newPrice
-    );
+    const matchStatus =
+      filter==="all" || o.status===filter;
+
+    return matchSearch && matchStatus;
+  });
+
+  if(!filtered.length){
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="6">
+          <div class="empty">No orders found.</div>
+        </td>
+      </tr>
+    `;
+    return;
   }
+
+  tbody.innerHTML = filtered.map(o=>`
+
+    <tr>
+
+      <td><strong>#${escapeHTML(o.id)}</strong></td>
+
+      <td>
+        <strong>${escapeHTML(o.customer || "Customer")}</strong>
+        <br>
+        <small>${escapeHTML(o.address || "")}</small>
+      </td>
+
+      <td>${escapeHTML(o.phone || "-")}</td>
+
+      <td><strong>₹${Number(o.total||0).toLocaleString("en-IN")}</strong></td>
+
+      <td>
+        <select onchange="changeOrderStatus('${o.id}',this.value)">
+          ${["Pending","Confirmed","Delivered","Cancelled"].map(s=>`
+            <option ${o.status===s?"selected":""}>${s}</option>
+          `).join("")}
+        </select>
+      </td>
+
+      <td>
+        <button class="action" onclick="viewOrder('${o.id}')">
+          View
+        </button>
+      </td>
+
+    </tr>
+
+  `).join("");
 }
 
 
-/* STOCK */
+/* Change status */
+function changeOrderStatus(id,status){
 
-function editStock(button){
+  const order = orders.find(o=>String(o.id)===String(id));
 
-  var product=button.closest(".product");
+  if(!order) return;
 
-  var amount=prompt(
-    "Enter current stock for "+product.dataset.name+":",
-    "10"
-  );
+  order.status = status;
 
-  if(amount===null) return;
+  saveOrders();
 
-  var badge=product.querySelector(".status-pill");
+  renderOrders();
+  loadDashboard();
+}
 
-  if(Number(amount)<=0){
 
-    badge.innerText="OUT OF STOCK";
-    badge.className="status-pill cancelled";
+/* View order */
+function viewOrder(id){
 
-  }else if(Number(amount)<=5){
+  const o = orders.find(x=>String(x.id)===String(id));
 
-    badge.innerText="LOW STOCK";
-    badge.className="status-pill";
-    badge.style.background="#fff0d4";
-    badge.style.color="#a36b00";
-
-  }else{
-
-    badge.innerText="IN STOCK";
-    badge.className="status-pill delivered";
-    badge.removeAttribute("style");
-  }
+  if(!o) return;
 
   alert(
-    product.dataset.name+
-    " stock updated: "+
-    amount
+`ORDER #${o.id}
+
+Customer: ${o.customer || "-"}
+Phone: ${o.phone || "-"}
+Address: ${o.address || "-"}
+Location: ${o.location || "-"}
+
+Total: ₹${Number(o.total||0).toLocaleString("en-IN")}
+
+Status: ${o.status || "Pending"}`
   );
 }
 
 
-/* DELETE */
+/* Products */
+function renderProducts(){
 
-function deleteProduct(button){
+  const tbody = document.getElementById("productsTable");
 
-  var product=button.closest(".product");
-  var name=product.dataset.name;
+  const search =
+    (document.getElementById("productSearch")?.value || "").toLowerCase();
 
-  var ok=confirm(
-    "⚠️ "+name+
-    " ko delete karna hai?"
+  const filtered = products.filter(p =>
+    `${p.name} ${p.category}`.toLowerCase().includes(search)
   );
 
-  if(ok){
-
-    product.remove();
-
-    alert(name+" deleted successfully.");
+  if(!filtered.length){
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="5">
+          <div class="empty">No products found.</div>
+        </td>
+      </tr>
+    `;
+    return;
   }
+
+  tbody.innerHTML = filtered.map(p=>`
+
+    <tr>
+
+      <td><strong>${escapeHTML(p.name)}</strong></td>
+
+      <td>${escapeHTML(p.category)}</td>
+
+      <td>${escapeHTML(p.unit)}</td>
+
+      <td><strong>₹${Number(p.price||0)}</strong></td>
+
+      <td>
+        <button class="action" onclick="editProduct('${p.id}')">
+          Edit
+        </button>
+        <button class="action" onclick="deleteProduct('${p.id}')">
+          Delete
+        </button>
+      </td>
+
+    </tr>
+
+  `).join("");
 }
 
 
-/* ON / OFF */
-
-function toggleProduct(button){
-
-  if(button.innerText==="ON"){
-
-    button.innerText="OFF";
-    button.className="btn red";
-
-  }else{
-
-    button.innerText="ON";
-    button.className="btn gray";
-  }
-}
-
-
-/* ADD PRODUCT */
-
+/* Product modal */
 function openProductModal(){
+
+  editProductId = null;
+
+  document.getElementById("productModalTitle").textContent =
+    "Add Product";
+
+  document.getElementById("productName").value="";
+  document.getElementById("productPrice").value="";
+  document.getElementById("productImage").value="";
+
   document.getElementById("productModal").classList.add("show");
 }
+
 
 function closeProductModal(){
   document.getElementById("productModal").classList.remove("show");
 }
 
-function addProduct(){
 
-  var name=document.getElementById("newProductName").value.trim();
-  var category=document.getElementById("newProductCategory").value;
-  var price=document.getElementById("newProductPrice").value;
-  var unit=document.getElementById("newProductUnit").value;
-  var icon=document.getElementById("newProductIcon").value || "🥬";
+/* Edit product */
+function editProduct(id){
+
+  const p = products.find(x=>String(x.id)===String(id));
+
+  if(!p) return;
+
+  editProductId = id;
+
+  document.getElementById("productModalTitle").textContent =
+    "Edit Product";
+
+  document.getElementById("productName").value=p.name;
+  document.getElementById("productCategory").value=p.category;
+  document.getElementById("productUnit").value=p.unit;
+  document.getElementById("productPrice").value=p.price;
+  document.getElementById("productImage").value=p.image || "";
+
+  document.getElementById("productModal").classList.add("show");
+}
+
+
+/* Save product */
+function saveProduct(){
+
+  const name =
+    document.getElementById("productName").value.trim();
+
+  const category =
+    document.getElementById("productCategory").value;
+
+  const unit =
+    document.getElementById("productUnit").value;
+
+  const price =
+    Number(document.getElementById("productPrice").value);
+
+  const image =
+    document.getElementById("productImage").value.trim();
 
   if(!name || !price){
 
-    alert("Product name aur price zaroor bharna hai.");
+    alert("Please enter product name and price.");
+
     return;
   }
 
-  var grid=document.getElementById("productGrid");
+  if(editProductId){
 
-  var div=document.createElement("div");
+    const p = products.find(x=>String(x.id)===String(editProductId));
 
-  div.className="product";
-  div.dataset.name=name;
+    if(p){
+      p.name=name;
+      p.category=category;
+      p.unit=unit;
+      p.price=price;
+      p.image=image;
+    }
 
-  div.innerHTML=`
-    <div class="product-photo">${icon}</div>
+  }else{
 
-    <div class="product-body">
+    products.push({
+      id:"p"+Date.now(),
+      name,
+      category,
+      unit,
+      price,
+      image
+    });
 
-      <div class="product-name">${name}</div>
+  }
 
-      <div class="product-meta">
-        ${category} • ${unit}
-      </div>
-
-      <div class="price">
-        ₹<span class="product-price">${price}</span> / ${unit}
-      </div>
-
-      <div style="margin-top:8px;">
-        <span class="status-pill delivered">
-          IN STOCK
-        </span>
-      </div>
-
-      <div class="product-actions">
-
-        <button class="btn light"
-        onclick="editPrice(this)">
-        ✏️ Price
-        </button>
-
-        <button class="btn light"
-        onclick="editStock(this)">
-        📦 Stock
-        </button>
-
-        <button class="btn red"
-        onclick="deleteProduct(this)">
-        🗑️ Delete
-        </button>
-
-        <button class="btn gray"
-        onclick="toggleProduct(this)">
-        ON
-        </button>
-
-      </div>
-
-    </div>
-  `;
-
-  grid.appendChild(div);
-
-  document.getElementById("newProductName").value="";
-  document.getElementById("newProductPrice").value="";
-  document.getElementById("newProductIcon").value="";
+  saveProducts();
 
   closeProductModal();
 
-  alert(name+" added successfully.");
+  renderProducts();
+
+  loadDashboard();
 }
 
 
-/* DELIVERY */
+/* Delete */
+function deleteProduct(id){
 
-function toggleDelivery(button){
+  const p = products.find(x=>String(x.id)===String(id));
 
-  if(button.innerText.includes("Available")){
+  if(!p) return;
 
-    button.innerText="🔴 Delivery Paused";
-    button.className="btn red";
-    
-  }else{
+  if(!confirm(`Delete ${p.name}?`)) return;
 
-    button.innerText="🟢 Delivery Available";
-    button.className="btn green";
-  }
+  products = products.filter(x=>String(x.id)!==String(id));
+
+  saveProducts();
+
+  renderProducts();
+  loadDashboard();
 }
 
 
-/* OFFER */
+/* Customers */
+function renderCustomers(){
 
-function addOffer(){
+  const tbody = document.getElementById("customersTable");
 
-  var name=prompt("Offer ka naam:");
+  const map = {};
 
-  if(!name) return;
+  orders.forEach(o=>{
 
-  var list=document.getElementById("offerList");
+    const key = o.phone || o.customer || "Unknown";
 
-  var div=document.createElement("div");
+    if(!map[key]){
+      map[key] = {
+        name:o.customer || "Customer",
+        phone:o.phone || "-",
+        address:o.address || "-",
+        count:0
+      };
+    }
 
-  div.className="offer";
+    map[key].count++;
+  });
 
-  div.innerHTML=`
-    <div>
-      <strong>🎁 ${name}</strong>
-      <small>New owner offer</small>
-    </div>
+  const customers = Object.values(map);
 
-    <button class="switch on"
-    onclick="this.classList.toggle('on')">
-      <span></span>
-    </button>
-  `;
+  if(!customers.length){
 
-  list.appendChild(div);
-}
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="4">
+          <div class="empty">No customers yet.</div>
+        </td>
+      </tr>
+    `;
 
-
-/* SAVE */
-
-function saveMessage(){
-
-  alert("Settings saved successfully!");
-}
-
-
-/* CLOSE MODAL OUTSIDE */
-
-document.getElementById("productModal").addEventListener("click",function(e){
-
-  if(e.target===this){
-    closeProductModal();
+    return;
   }
 
-});
+  tbody.innerHTML = customers.map(c=>`
 
+    <tr>
+      <td><strong>${escapeHTML(c.name)}</strong></td>
+      <td>${escapeHTML(c.phone)}</td>
+      <td>${escapeHTML(c.address)}</td>
+      <td><strong>${c.count}</strong></td>
+    </tr>
+
+  `).join("");
+}
+
+
+/* Storage */
+function saveOrders(){
+  localStorage.setItem("nandlal_orders",JSON.stringify(orders));
+}
+
+function saveProducts(){
+  localStorage.setItem("nandlal_products",JSON.stringify(products));
+}
+
+
+/* Helpers */
+function statusClass(status){
+
+  return {
+    Pending:"pending",
+    Confirmed:"confirmed",
+    Delivered:"delivered",
+    Cancelled:"cancelled"
+  }[status] || "pending";
+}
+
+
+function escapeHTML(value){
+
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+
+/* Start */
+loadDashboard();
+renderProducts();
+renderOrders();
+renderCustomers();
 </script>
 
 </body>
 </html>
+```
